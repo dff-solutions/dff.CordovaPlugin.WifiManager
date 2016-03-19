@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0" 
+    id="com.dff.cordova.plugin.wifimanager"
+    version="0.0.1">
+
+    <name>WifiManager</name>
+    <description>WifiManager Plugin</description>
+    <author>dff solutions</author>
+    <keywords>phonegap,cordova,wifi,dff</keywords>
+ 
+     <js-module src="www/wifimanager.js" name="wifimanager">
+        <clobbers target="WifiManager" />
+    </js-module>
+    
+    <dependency id="com.dff.cordova.plugins.common" url="https://github.com/dff-solutions/dff.CordovaPlugin.Common.git" />
+ 
+    <!-- android -->
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="WifiManager">
+                <param name="android-package" value="com.dff.cordova.plugin.wifimanager.WifiManagerPlugin"/>
+                <param name="onload" value="true" />
+            </feature>
+        </config-file>
+
+        <config-file target="AndroidManifest.xml" parent="/manifest">        	        
+        	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+            <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+            <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"/>
+            <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE"/>
+            <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+            
+            <uses-feature android:name="android.hardware.wifi" android:required="true" />
+        </config-file>
+        
+		<config-file target="AndroidManifest.xml" parent="/manifest/application/">
+			<receiver android:name="com.dff.cordova.plugin.wifimanager.NetworkConnectivityReceiver" android:enabled="true">
+				<intent-filter>
+					<action android:name="android.net.wifi.STATE_CHANGE" />
+					<action android:name="android.net.wifi.WIFI_STATE_CHANGED" />
+				</intent-filter>
+			</receiver>
+	
+			<receiver android:name="com.dff.cordova.plugin.wifimanager.NetworkScanReceiver" android:enabled="true">
+				<intent-filter>
+					<action android:name="android.net.wifi.SCAN_RESULTS" />
+				</intent-filter>
+			</receiver>
+		</config-file>
+		
+		<source-file src="src/android/com/dff/cordova/plugin/wifimanager/model/WifiState.java" target-dir="src/com/dff/cordova/plugin/wifimanager/model" />
+		<source-file src="src/android/com/dff/cordova/plugin/wifimanager/NetworkConnectivityReceiver.java" target-dir="src/com/dff/cordova/plugin/wifimanager" />
+		<source-file src="src/android/com/dff/cordova/plugin/wifimanager/NetworkScanReceiver.java" target-dir="src/com/dff/cordova/plugin/wifimanager" />
+		<source-file src="src/android/com/dff/cordova/plugin/wifimanager/WifiManagerPlugin.java" target-dir="src/com/dff/cordova/plugin/wifimanager" />
+
+     </platform>
+</plugin>
