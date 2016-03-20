@@ -33,7 +33,7 @@
             <uses-feature android:name="android.hardware.wifi" android:required="true" />
         </config-file>
         
-		<config-file target="AndroidManifest.xml" parent="/manifest/application/">
+		<!-- config-file target="AndroidManifest.xml" parent="/manifest/application/">
 			<receiver android:name="com.dff.cordova.plugin.wifimanager.NetworkConnectivityReceiver" android:enabled="true">
 				<intent-filter>
 					<action android:name="android.net.wifi.STATE_CHANGE" />
@@ -46,8 +46,10 @@
 					<action android:name="android.net.wifi.SCAN_RESULTS" />
 				</intent-filter>
 			</receiver>
-		</config-file>
+		</config-file -->
 		
+		<source-file src="src/android/com/dff/cordova/plugin/wifimanager/model/JsonNetworkInfo.java" target-dir="src/com/dff/cordova/plugin/wifimanager/model" />
+		<source-file src="src/android/com/dff/cordova/plugin/wifimanager/model/JsonWifiInfo.java" target-dir="src/com/dff/cordova/plugin/wifimanager/model" />
 		<source-file src="src/android/com/dff/cordova/plugin/wifimanager/model/WifiState.java" target-dir="src/com/dff/cordova/plugin/wifimanager/model" />
 		<source-file src="src/android/com/dff/cordova/plugin/wifimanager/NetworkConnectivityReceiver.java" target-dir="src/com/dff/cordova/plugin/wifimanager" />
 		<source-file src="src/android/com/dff/cordova/plugin/wifimanager/NetworkScanReceiver.java" target-dir="src/com/dff/cordova/plugin/wifimanager" />
