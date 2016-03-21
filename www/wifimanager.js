@@ -81,6 +81,16 @@ self.getWifiState = function (success, error) {
     cordova.exec(success, error, feature, "getWifiState", []);
 };
 
-
+/*
+ * Register callbacks for wifimanager disableNetwork messages.
+ *
+ * @param {Function} success         - Callback if action is successful.
+ * @param {Function} error           - Callback if action is not successful.
+ * @param {Object}   args            - An object containing the parameters.
+ * @param {Number}   args.netId      - Id of network to disable.
+ */
+self.disableNetwork = function (success, error, args) {
+    cordova.exec(success, error, feature, "disableNetwork", [args]);
+};
 
 module.exports = self;

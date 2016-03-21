@@ -56,6 +56,7 @@
 		<source-file src="src/android/com/dff/cordova/plugin/wifimanager/NetworkConnectivityReceiver.java" target-dir="src/com/dff/cordova/plugin/wifimanager" />
 		<source-file src="src/android/com/dff/cordova/plugin/wifimanager/action/WifiManagerAction.java" target-dir="src/com/dff/cordova/plugin/wifimanager/action" />
 		<source-file src="src/android/com/dff/cordova/plugin/wifimanager/action/GetConnectionInfo.java" target-dir="src/com/dff/cordova/plugin/wifimanager/action" />
+		<source-file src="src/android/com/dff/cordova/plugin/wifimanager/action/DisableNetwork.java" target-dir="src/com/dff/cordova/plugin/wifimanager/action" />
 		<source-file src="src/android/com/dff/cordova/plugin/wifimanager/action/GetScanResults.java" target-dir="src/com/dff/cordova/plugin/wifimanager/action" />
 		<source-file src="src/android/com/dff/cordova/plugin/wifimanager/action/GetWifiState.java" target-dir="src/com/dff/cordova/plugin/wifimanager/action" />
 		<source-file src="src/android/com/dff/cordova/plugin/wifimanager/NetworkScanReceiver.java" target-dir="src/com/dff/cordova/plugin/wifimanager" />
