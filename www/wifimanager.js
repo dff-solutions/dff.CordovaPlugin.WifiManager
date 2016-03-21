@@ -41,4 +41,46 @@ self.onWifiStateChanged = function (success, error) {
     cordova.exec(success, error, feature, "onWifiStateChanged", []);
 };
 
+/*
+ * Register callbacks for wifimanager onScanResultsAvaiblable messages.
+ *
+ * @param {Function} success         - Callback if action is successful.
+ * @param {Function} error           - Callback if action is not successful.
+ */
+self.onScanResultsAvaiblable = function (success, error) {
+    cordova.exec(success, error, feature, "onScanResultsAvaiblable", []);
+};
+
+/*
+ * Register callbacks for wifimanager getConnectionInfo messages.
+ *
+ * @param {Function} success         - Callback if action is successful.
+ * @param {Function} error           - Callback if action is not successful.
+ */
+self.getConnectionInfo = function (success, error) {
+    cordova.exec(success, error, feature, "getConnectionInfo", []);
+};
+
+/*
+ * Register callbacks for wifimanager getScanResults messages.
+ *
+ * @param {Function} success         - Callback if action is successful.
+ * @param {Function} error           - Callback if action is not successful.
+ */
+self.getScanResults = function (success, error) {
+    cordova.exec(success, error, feature, "getScanResults", []);
+};
+
+/*
+ * Register callbacks for wifimanager getWifiState messages.
+ *
+ * @param {Function} success         - Callback if action is successful.
+ * @param {Function} error           - Callback if action is not successful.
+ */
+self.getWifiState = function (success, error) {
+    cordova.exec(success, error, feature, "getWifiState", []);
+};
+
+
+
 module.exports = self;

@@ -38,8 +38,8 @@ public class WifiState {
 	public JSONObject toJson() throws JSONException {
 		JSONObject jsonWifiState = new JSONObject();
 		
-		jsonWifiState.put("wifiState", this.wifiState);
-		jsonWifiState.put("wifiStateDesc", this.toString());
+		jsonWifiState.put("state", this.wifiState);
+		jsonWifiState.put("desc", this.toString());
 		
 		return jsonWifiState;
 	}
