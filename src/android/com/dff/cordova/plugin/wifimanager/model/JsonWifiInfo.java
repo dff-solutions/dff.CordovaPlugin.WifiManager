@@ -20,7 +20,7 @@ public class JsonWifiInfo {
 		if (this.wifiInfo != null) {
 			jsonWifiInfo.put("hiddenSSID", this.wifiInfo.getHiddenSSID());
 			jsonWifiInfo.put("ipAddress", this.wifiInfo.getIpAddress());
-			jsonWifiInfo.put("LinkSpeed", this.wifiInfo.getLinkSpeed());
+			jsonWifiInfo.put("linkSpeed", this.wifiInfo.getLinkSpeed());
 			jsonWifiInfo.put("networkId", this.wifiInfo.getNetworkId());
 			jsonWifiInfo.put("rssi", this.wifiInfo.getRssi());
 			jsonWifiInfo.put("bssid", this.wifiInfo.getBSSID());

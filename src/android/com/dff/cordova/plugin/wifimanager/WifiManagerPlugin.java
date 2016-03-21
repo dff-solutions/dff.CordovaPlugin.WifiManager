@@ -108,6 +108,7 @@ public class WifiManagerPlugin extends CommonPlugin {
 	     	
 	     	if (cordovaAction != null) {
 	     		this.cordova.getThreadPool().execute(cordovaAction);
+	     		return true;
 	     	}
 	     	
 	     	return super.execute(action, args, callbackContext);
