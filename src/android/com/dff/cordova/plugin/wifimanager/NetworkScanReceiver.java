@@ -48,7 +48,7 @@ public class NetworkScanReceiver extends BroadcastReceiver {
 
 	@Override
 	public void onReceive(Context context, Intent intent) {
-		CordovaPluginLog.d(LOG_TAG, "Action Received: " + intent.getAction() + " From intent: " + intent);
+//		CordovaPluginLog.d(LOG_TAG, "Action Received: " + intent.getAction() + " From intent: " + intent);
 		
 		JSONArray jsonScanResults = new JSONArray();
 		

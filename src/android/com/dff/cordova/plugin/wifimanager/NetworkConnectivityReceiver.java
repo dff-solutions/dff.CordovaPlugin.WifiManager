@@ -63,7 +63,7 @@ public class NetworkConnectivityReceiver extends BroadcastReceiver {
 	@Override
 	public void onReceive(Context context, Intent intent) {
 		String action = intent.getAction();
-		CordovaPluginLog.d(LOG_TAG, "Action Received: " + action + " From intent: " + intent);
+//		CordovaPluginLog.d(LOG_TAG, "Action Received: " + action + " From intent: " + intent);
 		
 		if (action.equals(WifiManager.NETWORK_STATE_CHANGED_ACTION)) {
 			JSONObject jsonNetworkState = new JSONObject();
@@ -73,20 +73,20 @@ public class NetworkConnectivityReceiver extends BroadcastReceiver {
 					NetworkInfo networkInfo = (NetworkInfo) intent.getParcelableExtra(WifiManager.EXTRA_NETWORK_INFO);
 					
 					if (networkInfo != null) {
-						CordovaPluginLog.d(LOG_TAG, WifiManager.EXTRA_NETWORK_INFO + ": " + networkInfo.toString());
+//						CordovaPluginLog.d(LOG_TAG, WifiManager.EXTRA_NETWORK_INFO + ": " + networkInfo.toString());
 						jsonNetworkState.put(WifiManager.EXTRA_NETWORK_INFO, JsonNetworkInfo.getInstance(networkInfo).toJson());
 					}				
 				}
 				
 				if (intent.hasExtra(WifiManager.EXTRA_BSSID)) {
 					String bssid = intent.getStringExtra(WifiManager.EXTRA_BSSID);
-					CordovaPluginLog.d(LOG_TAG, WifiManager.EXTRA_BSSID + ": " + bssid);
+//					CordovaPluginLog.d(LOG_TAG, WifiManager.EXTRA_BSSID + ": " + bssid);
 					jsonNetworkState.put(WifiManager.EXTRA_BSSID, bssid);
 				}
 				
 				if (intent.hasExtra(WifiManager.EXTRA_WIFI_INFO)) {
 					WifiInfo wifiInfo = intent.getParcelableExtra(WifiManager.EXTRA_WIFI_INFO);
-					CordovaPluginLog.d(LOG_TAG, WifiManager.EXTRA_WIFI_INFO + ": " + wifiInfo.toString());
+//					CordovaPluginLog.d(LOG_TAG, WifiManager.EXTRA_WIFI_INFO + ": " + wifiInfo.toString());
 					jsonNetworkState.put(WifiManager.EXTRA_WIFI_INFO, JsonWifiInfo.getInstance(wifiInfo).toJson());
 				}
 				
@@ -115,7 +115,7 @@ public class NetworkConnectivityReceiver extends BroadcastReceiver {
 					int wifiState = intent.getIntExtra(WifiManager.EXTRA_WIFI_STATE, WifiManager.WIFI_STATE_UNKNOWN);
 					WifiState wifiStateObj = WifiState.getInstance(wifiState);
 					
-					CordovaPluginLog.d(LOG_TAG, "wifi state: " +  wifiState + " " + wifiStateObj);
+//					CordovaPluginLog.d(LOG_TAG, "wifi state: " +  wifiState + " " + wifiStateObj);
 					jsonWifiState.put(WifiManager.EXTRA_WIFI_STATE, wifiState);
 					jsonWifiState.put(WifiManager.EXTRA_WIFI_STATE + "Name", wifiStateObj.toString());
 				}
@@ -124,7 +124,7 @@ public class NetworkConnectivityReceiver extends BroadcastReceiver {
 					int previousWifiState = intent.getIntExtra(WifiManager.EXTRA_PREVIOUS_WIFI_STATE, WifiManager.WIFI_STATE_UNKNOWN);
 					WifiState previousWifiStateObj =  WifiState.getInstance(previousWifiState);
 					
-					CordovaPluginLog.d(LOG_TAG, "previousWifiState: " +  previousWifiState + " " + previousWifiStateObj);
+//					CordovaPluginLog.d(LOG_TAG, "previousWifiState: " +  previousWifiState + " " + previousWifiStateObj);
 					jsonWifiState.put(WifiManager.EXTRA_PREVIOUS_WIFI_STATE, previousWifiState);
 					jsonWifiState.put(WifiManager.EXTRA_PREVIOUS_WIFI_STATE + "Name", previousWifiStateObj.toString());
 				}
