@@ -7,6 +7,11 @@ import org.json.JSONException;
 import com.dff.cordova.plugin.common.CommonPlugin;
 import com.dff.cordova.plugin.common.action.CordovaAction;
 import com.dff.cordova.plugin.common.log.CordovaPluginLog;
+import com.dff.cordova.plugin.wifimanager.action.CalculateSignalLevel;
+import com.dff.cordova.plugin.wifimanager.action.CompareSignalLevel;
+import com.dff.cordova.plugin.wifimanager.action.Disconnect;
+import com.dff.cordova.plugin.wifimanager.action.EnableNetwork;
+import com.dff.cordova.plugin.wifimanager.action.GetConfiguredNetworks;
 import com.dff.cordova.plugin.wifimanager.action.GetConnectionInfo;
 import com.dff.cordova.plugin.wifimanager.action.GetScanResults;
 import com.dff.cordova.plugin.wifimanager.action.GetWifiState;
@@ -100,6 +105,41 @@ public class WifiManagerPlugin extends CommonPlugin {
 	     	}
 	     	else if (action.equals(GetWifiState.ACTION_NAME)) {
 	     		cordovaAction = new GetWifiState(action
+	     				, args
+	     				, callbackContext
+	     				, this.cordova
+	     				, this.wifiManager);
+	     	}
+	     	else if (action.equals(CalculateSignalLevel.ACTION_NAME)) {
+	     		cordovaAction = new CalculateSignalLevel(action
+	     				, args
+	     				, callbackContext
+	     				, this.cordova
+	     				, this.wifiManager);
+	     	}
+	     	else if (action.equals(CompareSignalLevel.ACTION_NAME)) {
+	     		cordovaAction = new CompareSignalLevel(action
+	     				, args
+	     				, callbackContext
+	     				, this.cordova
+	     				, this.wifiManager);
+	     	}
+	     	else if (action.equals(Disconnect.ACTION_NAME)) {
+	     		cordovaAction = new Disconnect(action
+	     				, args
+	     				, callbackContext
+	     				, this.cordova
+	     				, this.wifiManager);
+	     	}
+	     	else if (action.equals(EnableNetwork.ACTION_NAME)) {
+	     		cordovaAction = new EnableNetwork(action
+	     				, args
+	     				, callbackContext
+	     				, this.cordova
+	     				, this.wifiManager);
+	     	}
+	     	else if (action.equals(GetConfiguredNetworks.ACTION_NAME)) {
+	     		cordovaAction = new GetConfiguredNetworks(action
 	     				, args
 	     				, callbackContext
 	     				, this.cordova
