@@ -47,7 +47,7 @@ self.onWifiStateChanged = function (success, error) {
  * @param {Function} success         - Callback if action is successful.
  * @param {Function} error           - Callback if action is not successful.
  */
-self.onScanResultsAvaiblable = function (success, error) {
+self.onScanResultsAvailable = function (success, error) {
     cordova.exec(success, error, feature, "onScanResultsAvaiblable", []);
 };
 
