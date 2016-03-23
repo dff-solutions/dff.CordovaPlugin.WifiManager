@@ -9,12 +9,15 @@ import com.dff.cordova.plugin.common.action.CordovaAction;
 import com.dff.cordova.plugin.common.log.CordovaPluginLog;
 import com.dff.cordova.plugin.wifimanager.action.CalculateSignalLevel;
 import com.dff.cordova.plugin.wifimanager.action.CompareSignalLevel;
+import com.dff.cordova.plugin.wifimanager.action.DisableNetwork;
 import com.dff.cordova.plugin.wifimanager.action.Disconnect;
 import com.dff.cordova.plugin.wifimanager.action.EnableNetwork;
 import com.dff.cordova.plugin.wifimanager.action.GetConfiguredNetworks;
 import com.dff.cordova.plugin.wifimanager.action.GetConnectionInfo;
+import com.dff.cordova.plugin.wifimanager.action.GetDhcpInfo;
 import com.dff.cordova.plugin.wifimanager.action.GetScanResults;
 import com.dff.cordova.plugin.wifimanager.action.GetWifiState;
+import com.dff.cordova.plugin.wifimanager.action.SetWifiEnabled;
 
 import android.content.Context;
 import android.net.wifi.WifiManager;
@@ -89,27 +92,6 @@ public class WifiManagerPlugin extends CommonPlugin {
 	     		
 	     		return true;
 	     	}
-	     	else if (action.equals(GetConnectionInfo.ACTION_NAME)) {
-	     		cordovaAction = new GetConnectionInfo(action
-	     				, args
-	     				, callbackContext
-	     				, this.cordova
-	     				, this.wifiManager);
-	     	}
-	     	else if (action.equals(GetScanResults.ACTION_NAME)) {
-	     		cordovaAction = new GetScanResults	(action
-	     				, args
-	     				, callbackContext
-	     				, this.cordova
-	     				, this.wifiManager);
-	     	}
-	     	else if (action.equals(GetWifiState.ACTION_NAME)) {
-	     		cordovaAction = new GetWifiState(action
-	     				, args
-	     				, callbackContext
-	     				, this.cordova
-	     				, this.wifiManager);
-	     	}
 	     	else if (action.equals(CalculateSignalLevel.ACTION_NAME)) {
 	     		cordovaAction = new CalculateSignalLevel(action
 	     				, args
@@ -123,6 +105,13 @@ public class WifiManagerPlugin extends CommonPlugin {
 	     				, callbackContext
 	     				, this.cordova
 	     				, this.wifiManager);
+	     	}
+	     	else if (action.equals(DisableNetwork.ACTION_NAME)) {
+	     		cordovaAction = new DisableNetwork(action
+	     				, args
+	     				, callbackContext
+	     				, cordova
+	     				, wifiManager);
 	     	}
 	     	else if (action.equals(Disconnect.ACTION_NAME)) {
 	     		cordovaAction = new Disconnect(action
@@ -140,6 +129,41 @@ public class WifiManagerPlugin extends CommonPlugin {
 	     	}
 	     	else if (action.equals(GetConfiguredNetworks.ACTION_NAME)) {
 	     		cordovaAction = new GetConfiguredNetworks(action
+	     				, args
+	     				, callbackContext
+	     				, this.cordova
+	     				, this.wifiManager);
+	     	}
+	     	else if (action.equals(GetConnectionInfo.ACTION_NAME)) {
+	     		cordovaAction = new GetConnectionInfo(action
+	     				, args
+	     				, callbackContext
+	     				, this.cordova
+	     				, this.wifiManager);
+	     	}
+	     	else if (action.equals(GetDhcpInfo.ACTION_NAME)) {
+	     		cordovaAction = new GetDhcpInfo(action
+	     				, args
+	     				, callbackContext
+	     				, this.cordova
+	     				, this.wifiManager);
+	     	}
+	     	else if (action.equals(GetWifiState.ACTION_NAME)) {
+	     		cordovaAction = new GetWifiState(action
+	     				, args
+	     				, callbackContext
+	     				, this.cordova
+	     				, this.wifiManager);
+	     	}
+	     	else if (action.equals(GetScanResults.ACTION_NAME)) {
+	     		cordovaAction = new GetScanResults	(action
+	     				, args
+	     				, callbackContext
+	     				, this.cordova
+	     				, this.wifiManager);
+	     	}
+	     	else if (action.equals(SetWifiEnabled.ACTION_NAME)) {
+	     		cordovaAction = new SetWifiEnabled(action
 	     				, args
 	     				, callbackContext
 	     				, this.cordova
