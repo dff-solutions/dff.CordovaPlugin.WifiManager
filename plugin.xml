@@ -48,9 +48,15 @@
 			</receiver>
 		</config-file -->
 		
+
+		<source-file src="src/android/com/dff/cordova/plugin/wifimanager/model/JsonWifiConfigurationAllowedAuthAlgorithm.java" target-dir="src/com/dff/cordova/plugin/wifimanager/model" />
+		<source-file src="src/android/com/dff/cordova/plugin/wifimanager/model/JsonWifiConfigurationAllowedProtocols.java" target-dir="src/com/dff/cordova/plugin/wifimanager/model" />
+		<source-file src="src/android/com/dff/cordova/plugin/wifimanager/model/JsonWifiConfigurationAllowedGroupCiphers.java" target-dir="src/com/dff/cordova/plugin/wifimanager/model" />
 		<source-file src="src/android/com/dff/cordova/plugin/wifimanager/model/JsonNetworkInfo.java" target-dir="src/com/dff/cordova/plugin/wifimanager/model" />
 		<source-file src="src/android/com/dff/cordova/plugin/wifimanager/model/WifiState.java" target-dir="src/com/dff/cordova/plugin/wifimanager/model" />
 		<source-file src="src/android/com/dff/cordova/plugin/wifimanager/model/JsonWifiInfo.java" target-dir="src/com/dff/cordova/plugin/wifimanager/model" />
+		<source-file src="src/android/com/dff/cordova/plugin/wifimanager/model/JsonWifiConfigurationAllowedPairwiseCiphers.java" target-dir="src/com/dff/cordova/plugin/wifimanager/model" />
+		<source-file src="src/android/com/dff/cordova/plugin/wifimanager/model/JsonWifiConfigurationAllowedKeyManagement.java" target-dir="src/com/dff/cordova/plugin/wifimanager/model" />
 		<source-file src="src/android/com/dff/cordova/plugin/wifimanager/model/JsonWifiConfiguration.java" target-dir="src/com/dff/cordova/plugin/wifimanager/model" />
 		<source-file src="src/android/com/dff/cordova/plugin/wifimanager/model/JsonScanResult.java" target-dir="src/com/dff/cordova/plugin/wifimanager/model" />
 		<source-file src="src/android/com/dff/cordova/plugin/wifimanager/WifiManagerPlugin.java" target-dir="src/com/dff/cordova/plugin/wifimanager" />
