@@ -18,11 +18,30 @@ public class JsonWifiConfiguration {
 		
 		
 		if (this.wifiConfiguration != null) {
-			jsonWifiConfiguration.put("allowedAuthAlgorithms", this.wifiConfiguration.allowedAuthAlgorithms);
-			jsonWifiConfiguration.put("allowedGroupCiphers", this.wifiConfiguration.allowedGroupCiphers);
-			jsonWifiConfiguration.put("allowedKeyManagement", this.wifiConfiguration.allowedKeyManagement);
-			jsonWifiConfiguration.put("allowedPairwiseCiphers", this.wifiConfiguration.allowedPairwiseCiphers);
-			jsonWifiConfiguration.put("allowedProtocols", this.wifiConfiguration.allowedProtocols);
+			JSONArray jsonAllowedAuthAlgorithms = JsonWifiConfigurationAllowedAuthAlgorithm
+					.getInstance(this.wifiConfiguration.allowedAuthAlgorithms)
+					.toJson();
+			
+			JSONArray jsonAllowedGroupCiphers = JsonWifiConfigurationAllowedGroupCiphers
+					.getInstance(this.wifiConfiguration.allowedGroupCiphers)
+					.toJson();
+			
+			JSONArray jsonAllowedKeyManagement = JsonWifiConfigurationAllowedKeyManagement
+					.getInstance(this.wifiConfiguration.allowedKeyManagement)
+					.toJson();
+			JSONArray jsonAllowedPairwiseCiphers = JsonWifiConfigurationAllowedPairwiseCiphers
+					.getInstance(this.wifiConfiguration.allowedPairwiseCiphers)
+					.toJson();
+			JSONArray jsonAllowedProtocols = JsonWifiConfigurationAllowedProtocols
+					.getInstance(this.wifiConfiguration.allowedProtocols)
+					.toJson();
+
+			
+			jsonWifiConfiguration.put("allowedAuthAlgorithms", jsonAllowedAuthAlgorithms);
+			jsonWifiConfiguration.put("allowedGroupCiphers", jsonAllowedGroupCiphers);
+			jsonWifiConfiguration.put("allowedKeyManagement", jsonAllowedKeyManagement);
+			jsonWifiConfiguration.put("allowedPairwiseCiphers", jsonAllowedPairwiseCiphers);
+			jsonWifiConfiguration.put("allowedProtocols", jsonAllowedProtocols);
 			jsonWifiConfiguration.put("bssid", this.wifiConfiguration.BSSID);
 			jsonWifiConfiguration.put("ssid", this.wifiConfiguration.SSID);
 			jsonWifiConfiguration.put("hiddenSSID", this.wifiConfiguration.hiddenSSID);

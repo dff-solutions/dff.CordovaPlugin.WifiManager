@@ -129,6 +129,50 @@ self.getConfiguredNetworks = function (success, error, args) {
     cordova.exec(success, error, feature, "getConfiguredNetworks", [args]);
 };
 
+/*
+ * Disassociate from the currently active access point.
+ *
+ * @param {Function} success         - Callback if action is successful.
+ * @param {Function} error           - Callback if action is not successful.
+ */
+self.disconnect = function (success, error) {
+    cordova.exec(success, error, feature, "disconnect", []);
+};
 
+/*
+ * Allow a previously configured network to be associated with.
+ *
+ * @param {Function} success         - Callback if action is successful.
+ * @param {Function} error           - Callback if action is not successful.
+ * @param {Object}   args            - An object containing the parameters.
+ * @param {Number}   args.netId      - Id of network to enable.
+ * @param {Number}   args.disableOthers -  if true, disable all other networks.
+ * The way to select a particular network to connect to is specify true for this parameter.
+ */
+self.enableNetwork = function (success, error, args) {
+    cordova.exec(success, error, feature, "enableNetwork", [args]);
+};
+
+/*
+ * Return the DHCP-assigned addresses from the last successful DHCP request, if any.
+ *
+ * @param {Function} success         - Callback if action is successful.
+ * @param {Function} error           - Callback if action is not successful.
+ */
+self.getDhcpInfo = function (success, error) {
+    cordova.exec(success, error, feature, "getDhcpInfo", []);
+};
+
+/*
+ * Allow a previously configured network to be associated with.
+ *
+ * @param {Function} success         - Callback if action is successful.
+ * @param {Function} error           - Callback if action is not successful.
+ * @param {Object}   args            - An object containing the parameters.
+ * @param {Number}   args.enabled    - true to enable, false to disable.
+ */
+self.setWifiEnabled = function (success, error, args) {
+    cordova.exec(success, error, feature, "setWifiEnabled", [args]);
+};
 
 module.exports = self;
