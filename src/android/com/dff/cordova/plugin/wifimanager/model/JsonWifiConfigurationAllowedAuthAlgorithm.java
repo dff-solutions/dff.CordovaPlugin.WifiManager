@@ -5,8 +5,6 @@ import java.util.BitSet;
 import org.json.JSONArray;
 import org.json.JSONException;
 
-import com.dff.cordova.plugin.common.log.CordovaPluginLog;
-
 import android.net.wifi.WifiConfiguration;
 
 public class JsonWifiConfigurationAllowedAuthAlgorithm {
