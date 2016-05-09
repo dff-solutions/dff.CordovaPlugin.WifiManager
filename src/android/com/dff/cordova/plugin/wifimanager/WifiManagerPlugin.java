@@ -19,6 +19,7 @@ import com.dff.cordova.plugin.wifimanager.action.GetScanResults;
 import com.dff.cordova.plugin.wifimanager.action.GetWifiState;
 import com.dff.cordova.plugin.wifimanager.action.IsScanAlwaysAvailable;
 import com.dff.cordova.plugin.wifimanager.action.IsWifiEnabled;
+import com.dff.cordova.plugin.wifimanager.action.Reassociate;
 import com.dff.cordova.plugin.wifimanager.action.Reconnect;
 import com.dff.cordova.plugin.wifimanager.action.SetWifiEnabled;
 import com.dff.cordova.plugin.wifimanager.action.StartScan;
@@ -172,6 +173,9 @@ public class WifiManagerPlugin extends CommonPlugin {
 	     				, callbackContext
 	     				, this.cordova
 	     				, this.wifiManager);
+	     	}
+	     	else if (action.equals(Reassociate.ACTION_NAME)) {
+	     		cordovaAction = new Reassociate(action, args, callbackContext, this.cordova, this.wifiManager);
 	     	}
 	     	else if (action.equals(Reconnect.ACTION_NAME)) {
 	     		cordovaAction = new Reconnect(action, args, callbackContext, this.cordova, this.wifiManager);

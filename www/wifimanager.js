@@ -188,7 +188,18 @@ self.isWifiEnabled = function (success, error) {
 
 /**
  * Reconnect to the currently active access point,
- * if we are currentls disconnected.
+ * even if we are already connected.
+ *
+ * @param {Function} success         - Callback if action is successful.
+ * @param {Function} error           - Callback if action is not successful.
+ */
+self.reassociate = function (success, error) {
+    cordova.exec(success, error, feature, "reassociate", []);
+};
+
+/**
+ * Reconnect to the currently active access point,
+ * if we are currently disconnected.
  *
  * @param {Function} success         - Callback if action is successful.
  * @param {Function} error           - Callback if action is not successful.
