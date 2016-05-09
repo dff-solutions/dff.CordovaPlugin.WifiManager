@@ -11,7 +11,7 @@ import com.dff.cordova.plugin.common.log.CordovaPluginLog;
 import android.net.wifi.WifiManager;
 
 public class IsScanAlwaysAvailable extends WifiManagerAction {
-	public static final String ACTION_NAME = "IsScanAlwaysAvailable";
+	public static final String ACTION_NAME = "isScanAlwaysAvailable";
 
 	public IsScanAlwaysAvailable(String action, JSONArray args, CallbackContext callbackContext, CordovaInterface cordova,
 			WifiManager wifiManager) {

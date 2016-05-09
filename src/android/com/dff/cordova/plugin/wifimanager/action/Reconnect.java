@@ -8,10 +8,10 @@ import com.dff.cordova.plugin.common.log.CordovaPluginLog;
 
 import android.net.wifi.WifiManager;
 
-public class StartScan extends WifiManagerAction {
-	public static final String ACTION_NAME = "startScan";
+public class Reconnect extends WifiManagerAction {
+	public static final String ACTION_NAME = "reconnect";
 
-	public StartScan(String action, JSONArray args, CallbackContext callbackContext, CordovaInterface cordova,
+	public Reconnect(String action, JSONArray args, CallbackContext callbackContext, CordovaInterface cordova,
 			WifiManager wifiManager) {
 		super(action, args, callbackContext, cordova, wifiManager);
 	}
@@ -21,11 +21,11 @@ public class StartScan extends WifiManagerAction {
 		super.run();
 		
 		try {
-			if (this.wifiManager.startScan()) {
+			if (this.wifiManager.reconnect()) {
 				this.callbackContext.success();
 			}
 			else {
-				this.callbackContext.error("could not start scan");
+				this.callbackContext.error("could not reconnect");
 			}
 		}
 		catch(Exception e){

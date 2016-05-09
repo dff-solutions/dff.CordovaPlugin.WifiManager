@@ -41,7 +41,7 @@ public class SetWifiEnabled extends WifiManagerAction {
 			}
 			else {
 				this.callbackContext.error("could not set wifi enabled: " + enabled);
-			}			
+			}
 		}
 		catch(JSONException e) {
 			CordovaPluginLog.e(this.getClass().getName(), e.getMessage(), e);

@@ -20,10 +20,8 @@ public class Disconnect extends WifiManagerAction {
 	public void run() {
 		super.run();
 		
-		try {		
-			boolean succeeded = this.wifiManager.disconnect();
-			
-			if (succeeded) {
+		try {			
+			if (this.wifiManager.disconnect()) {
 				this.callbackContext.success();
 			}
 			else {

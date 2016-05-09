@@ -52,36 +52,6 @@ self.onScanResultsAvailable = function (success, error) {
 };
 
 /*
- * Register callbacks for wifimanager getConnectionInfo messages.
- *
- * @param {Function} success         - Callback if action is successful.
- * @param {Function} error           - Callback if action is not successful.
- */
-self.getConnectionInfo = function (success, error) {
-    cordova.exec(success, error, feature, "getConnectionInfo", []);
-};
-
-/*
- * Register callbacks for wifimanager getScanResults messages.
- *
- * @param {Function} success         - Callback if action is successful.
- * @param {Function} error           - Callback if action is not successful.
- */
-self.getScanResults = function (success, error) {
-    cordova.exec(success, error, feature, "getScanResults", []);
-};
-
-/*
- * Register callbacks for wifimanager getWifiState messages.
- *
- * @param {Function} success         - Callback if action is successful.
- * @param {Function} error           - Callback if action is not successful.
- */
-self.getWifiState = function (success, error) {
-    cordova.exec(success, error, feature, "getWifiState", []);
-};
-
-/*
  * Calculates the level of the signal. This should be used any time a signal is being shown.
  *
  * @param {Function} success         - Callback if action is successful.
@@ -108,7 +78,7 @@ self.compareSignalLevel = function (success, error, args) {
 }
 
 /*
- * Register callbacks for wifimanager disableNetwork messages.
+ * Disable a configured network.
  *
  * @param {Function} success         - Callback if action is successful.
  * @param {Function} error           - Callback if action is not successful.
@@ -117,16 +87,6 @@ self.compareSignalLevel = function (success, error, args) {
  */
 self.disableNetwork = function (success, error, args) {
     cordova.exec(success, error, feature, "disableNetwork", [args]);
-};
-
-/*
- * Return a list of all the networks configured in the supplicant. Not all fields of WifiConfiguration are returned.
- *
- * @param {Function} success         - Callback if action is successful.
- * @param {Function} error           - Callback if action is not successful.
- */
-self.getConfiguredNetworks = function (success, error, args) {
-    cordova.exec(success, error, feature, "getConfiguredNetworks", [args]);
 };
 
 /*
@@ -154,6 +114,26 @@ self.enableNetwork = function (success, error, args) {
 };
 
 /*
+ * Return a list of all the networks configured in the supplicant. Not all fields of WifiConfiguration are returned.
+ *
+ * @param {Function} success         - Callback if action is successful.
+ * @param {Function} error           - Callback if action is not successful.
+ */
+self.getConfiguredNetworks = function (success, error, args) {
+    cordova.exec(success, error, feature, "getConfiguredNetworks", [args]);
+};
+
+/*
+ * Register callbacks for wifimanager getConnectionInfo messages.
+ *
+ * @param {Function} success         - Callback if action is successful.
+ * @param {Function} error           - Callback if action is not successful.
+ */
+self.getConnectionInfo = function (success, error) {
+    cordova.exec(success, error, feature, "getConnectionInfo", []);
+};
+
+/*
  * Return the DHCP-assigned addresses from the last successful DHCP request, if any.
  *
  * @param {Function} success         - Callback if action is successful.
@@ -161,6 +141,60 @@ self.enableNetwork = function (success, error, args) {
  */
 self.getDhcpInfo = function (success, error) {
     cordova.exec(success, error, feature, "getDhcpInfo", []);
+};
+
+/*
+ * Register callbacks for wifimanager getScanResults messages.
+ *
+ * @param {Function} success         - Callback if action is successful.
+ * @param {Function} error           - Callback if action is not successful.
+ */
+self.getScanResults = function (success, error) {
+    cordova.exec(success, error, feature, "getScanResults", []);
+};
+
+/*
+ * Register callbacks for wifimanager getWifiState messages.
+ *
+ * @param {Function} success         - Callback if action is successful.
+ * @param {Function} error           - Callback if action is not successful.
+ */
+self.getWifiState = function (success, error) {
+    cordova.exec(success, error, feature, "getWifiState", []);
+};
+
+/**
+ * Check if scanning is always available.
+ * success callback result contains "isScanAlwaysAvailable" that indicates
+ * if apps can issue startScan event if Wi-Fi is turned off.
+ *
+ * @param {Function} success         - Callback if action is successful.
+ * @param {Function} error           - Callback if action is not successful.
+ */
+self.isScanAlwaysAvailable = function (success, error) {
+    cordova.exec(success, error, feature, "isScanAlwaysAvailable", []);
+};
+
+/**
+ * Callback result contains "enabled" that indicates whether Wi-Fi is
+ * enabled or disabled.
+ *
+ * @param {Function} success         - Callback if action is successful.
+ * @param {Function} error           - Callback if action is not successful.
+ */
+self.isWifiEnabled = function (success, error) {
+    cordova.exec(success, error, feature, "isWifiEnabled", []);
+};
+
+/**
+ * Reconnect to the currently active access point,
+ * if we are currentls disconnected.
+ *
+ * @param {Function} success         - Callback if action is successful.
+ * @param {Function} error           - Callback if action is not successful.
+ */
+self.reconnect = function (success, error) {
+    cordova.exec(success, error, feature, "reconnect", []);
 };
 
 /*
@@ -173,6 +207,18 @@ self.getDhcpInfo = function (success, error) {
  */
 self.setWifiEnabled = function (success, error, args) {
     cordova.exec(success, error, feature, "setWifiEnabled", [args]);
+};
+
+/**
+ * Request a scan for access points.
+ * Result will be available via event later.
+ *
+ * @param {Function} success         - Callback if action is successful.
+ * @param {Function} error           - Callback if action is not successful.
+ * @return {[type]}         [description]
+ */
+self.startScan = function (success, error) {
+    cordova.exec(success, error, feature, "startScan", [args]);
 };
 
 module.exports = self;
