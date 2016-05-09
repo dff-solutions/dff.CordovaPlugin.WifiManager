@@ -17,7 +17,10 @@ import com.dff.cordova.plugin.wifimanager.action.GetConnectionInfo;
 import com.dff.cordova.plugin.wifimanager.action.GetDhcpInfo;
 import com.dff.cordova.plugin.wifimanager.action.GetScanResults;
 import com.dff.cordova.plugin.wifimanager.action.GetWifiState;
+import com.dff.cordova.plugin.wifimanager.action.IsScanAlwaysAvailable;
+import com.dff.cordova.plugin.wifimanager.action.IsWifiEnabled;
 import com.dff.cordova.plugin.wifimanager.action.SetWifiEnabled;
+import com.dff.cordova.plugin.wifimanager.action.StartScan;
 
 import android.content.Context;
 import android.net.wifi.WifiManager;
@@ -162,12 +165,25 @@ public class WifiManagerPlugin extends CommonPlugin {
 	     				, this.cordova
 	     				, this.wifiManager);
 	     	}
+	     	else if (action.equals(IsWifiEnabled.ACTION_NAME)) {
+	     		cordovaAction = new IsWifiEnabled(action
+	     				, args
+	     				, callbackContext
+	     				, this.cordova
+	     				, this.wifiManager);
+	     	}
 	     	else if (action.equals(SetWifiEnabled.ACTION_NAME)) {
 	     		cordovaAction = new SetWifiEnabled(action
 	     				, args
 	     				, callbackContext
 	     				, this.cordova
 	     				, this.wifiManager);
+	     	}
+	     	else if (action.equals(IsScanAlwaysAvailable.ACTION_NAME)) {
+	     		cordovaAction = new IsScanAlwaysAvailable(action, args, callbackContext, this.cordova, this.wifiManager);
+	     	}
+	     	else if (action.equals(StartScan.ACTION_NAME)) {
+	     		cordovaAction = new StartScan(action, args, callbackContext, this.cordova, this.wifiManager);
 	     	}
 	     	
 	     	if (cordovaAction != null) {

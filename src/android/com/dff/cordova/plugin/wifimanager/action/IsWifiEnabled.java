@@ -10,10 +10,10 @@ import com.dff.cordova.plugin.common.log.CordovaPluginLog;
 
 import android.net.wifi.WifiManager;
 
-public class SetWifiEnabled extends WifiManagerAction {
-	public static final String ACTION_NAME = "setWifiEnabled";
+public class IsWifiEnabled extends WifiManagerAction {
+	public static final String ACTION_NAME = "isWifiEnabled";
 
-	public SetWifiEnabled(String action, JSONArray args, CallbackContext callbackContext, CordovaInterface cordova,
+	public IsWifiEnabled(String action, JSONArray args, CallbackContext callbackContext, CordovaInterface cordova,
 			WifiManager wifiManager) {
 		super(action, args, callbackContext, cordova, wifiManager);
 	}
@@ -23,25 +23,11 @@ public class SetWifiEnabled extends WifiManagerAction {
 		super.run();
 		
 		try {
-			boolean enabled;
+			JSONObject jsonResult = new JSONObject();
+			jsonResult.put("enabled", this.wifiManager.isWifiEnabled());
 			
-			JSONObject jsonArgs = this.args.getJSONObject(0);
-			if (jsonArgs == null) {
-				throw new Exception("args missing");
-			}
-	    	
-			if (!jsonArgs.has("enabled")) {
-				throw new Exception("enabled arg missing");
-			}
+			this.callbackContext.success(jsonResult);		
 			
-			enabled = jsonArgs.getBoolean("enabled");
-			
-			if (this.wifiManager.setWifiEnabled(enabled)) {
-				this.callbackContext.success();
-			}
-			else {
-				this.callbackContext.error("could not set wifi enabled: " + enabled);
-			}			
 		}
 		catch(JSONException e) {
 			CordovaPluginLog.e(this.getClass().getName(), e.getMessage(), e);
