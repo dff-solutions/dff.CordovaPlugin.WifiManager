@@ -16,7 +16,7 @@ import android.net.wifi.WifiManager;
 
 public class GetConfiguredNetworks extends WifiManagerAction {
 	public static final String ACTION_NAME = "getConfiguredNetworks";
-
+	
 	public GetConfiguredNetworks(String action, JSONArray args, CallbackContext callbackContext, CordovaInterface cordova,
 			WifiManager wifiManager) {
 		super(action, args, callbackContext, cordova, wifiManager);

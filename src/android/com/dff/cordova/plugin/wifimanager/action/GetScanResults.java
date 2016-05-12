@@ -16,7 +16,7 @@ import android.net.wifi.WifiManager;
 
 public class GetScanResults extends WifiManagerAction {
 	public static final String ACTION_NAME = "getScanResults";
-
+	
 	public GetScanResults(String action, JSONArray args, CallbackContext callbackContext, CordovaInterface cordova,
 			WifiManager wifiManager) {
 		super(action, args, callbackContext, cordova, wifiManager);

@@ -12,7 +12,7 @@ import android.net.wifi.WifiManager;
 
 public class SetWifiEnabled extends WifiManagerAction {
 	public static final String ACTION_NAME = "setWifiEnabled";
-
+	
 	public SetWifiEnabled(String action, JSONArray args, CallbackContext callbackContext, CordovaInterface cordova,
 			WifiManager wifiManager) {
 		super(action, args, callbackContext, cordova, wifiManager);

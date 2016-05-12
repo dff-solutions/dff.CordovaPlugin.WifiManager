@@ -10,7 +10,7 @@ import android.net.wifi.WifiManager;
 
 public class StartScan extends WifiManagerAction {
 	public static final String ACTION_NAME = "startScan";
-
+	
 	public StartScan(String action, JSONArray args, CallbackContext callbackContext, CordovaInterface cordova,
 			WifiManager wifiManager) {
 		super(action, args, callbackContext, cordova, wifiManager);

@@ -12,7 +12,7 @@ import android.net.wifi.WifiManager;
 
 public class CalculateSignalLevel extends WifiManagerAction {
 	public static final String ACTION_NAME = "calculateSignalLevel";
-
+	
 	public CalculateSignalLevel(String action, JSONArray args, CallbackContext callbackContext, CordovaInterface cordova,
 			WifiManager wifiManager) {
 		super(action, args, callbackContext, cordova, wifiManager);

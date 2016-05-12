@@ -12,7 +12,7 @@ import android.net.wifi.WifiManager;
 
 public class CompareSignalLevel extends WifiManagerAction {
 	public static final String ACTION_NAME = "compareSignalLevel";
-
+	
 	public CompareSignalLevel(String action, JSONArray args, CallbackContext callbackContext, CordovaInterface cordova,
 			WifiManager wifiManager) {
 		super(action, args, callbackContext, cordova, wifiManager);

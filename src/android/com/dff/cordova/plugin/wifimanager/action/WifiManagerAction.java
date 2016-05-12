@@ -10,6 +10,8 @@ import android.net.wifi.WifiManager;
 
 public abstract class WifiManagerAction extends CordovaAction {
 	protected WifiManager wifiManager;
+	
+	public static final String ACTION_NAME = "WifiManagerAction";
 
 	public WifiManagerAction(String action, JSONArray args
 			, CallbackContext callbackContext

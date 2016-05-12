@@ -1,6 +1,10 @@
 package com.dff.cordova.plugin.wifimanager;
 
+import java.lang.reflect.InvocationTargetException;
+import java.util.HashMap;
+
 import org.apache.cordova.CallbackContext;
+import org.apache.cordova.CordovaInterface;
 import org.json.JSONArray;
 import org.json.JSONException;
 
@@ -23,6 +27,7 @@ import com.dff.cordova.plugin.wifimanager.action.Reassociate;
 import com.dff.cordova.plugin.wifimanager.action.Reconnect;
 import com.dff.cordova.plugin.wifimanager.action.SetWifiEnabled;
 import com.dff.cordova.plugin.wifimanager.action.StartScan;
+import com.dff.cordova.plugin.wifimanager.action.WifiManagerAction;
 
 import android.content.Context;
 import android.net.wifi.WifiManager;
@@ -32,173 +37,127 @@ public class WifiManagerPlugin extends CommonPlugin {
 	protected NetworkConnectivityReceiver networkConnectivityReceiver;
 	protected NetworkScanReceiver networkScanReceiver;
 	
+	public static HashMap<String, Class<? extends WifiManagerAction>> actions = new HashMap<String, Class<? extends WifiManagerAction>>();
+	
 	protected WifiManager wifiManager;
 	
 	public WifiManagerPlugin() {
 		super();
+		
+		registerAction(CalculateSignalLevel.ACTION_NAME, CalculateSignalLevel.class);
+		registerAction(CompareSignalLevel.ACTION_NAME, CompareSignalLevel.class);
+		registerAction(DisableNetwork.ACTION_NAME, DisableNetwork.class);
+		registerAction(Disconnect.ACTION_NAME, Disconnect.class);
+		registerAction(EnableNetwork.ACTION_NAME, EnableNetwork.class);
+		registerAction(GetConfiguredNetworks.ACTION_NAME, GetConfiguredNetworks.class);
+		registerAction(GetConnectionInfo.ACTION_NAME, GetConnectionInfo.class);		
+		registerAction(GetDhcpInfo.ACTION_NAME, GetDhcpInfo.class);
+		registerAction(GetScanResults.ACTION_NAME, GetScanResults.class);
+		registerAction(GetWifiState.ACTION_NAME, GetWifiState.class);
+		registerAction(IsScanAlwaysAvailable.ACTION_NAME, IsScanAlwaysAvailable.class);
+		registerAction(IsWifiEnabled.ACTION_NAME, IsWifiEnabled.class);
+		registerAction(Reassociate.ACTION_NAME, Reassociate.class);
+		registerAction(Reconnect.ACTION_NAME, Reconnect.class);
+		registerAction(SetWifiEnabled.ACTION_NAME, SetWifiEnabled.class);
+		registerAction(StartScan.ACTION_NAME, StartScan.class);
 	}
 	
-	   /**
-		* Called after plugin construction and fields have been initialized.
-		*/
-		@Override
-		public void pluginInitialize() {
-			super.pluginInitialize();
-			this.wifiManager = (WifiManager) this.cordova
-					.getActivity()
-					.getApplicationContext()
-					.getSystemService(Context.WIFI_SERVICE);
-			this.networkConnectivityReceiver = new NetworkConnectivityReceiver(this.cordova.getActivity());
-			this.networkScanReceiver = new NetworkScanReceiver(this.cordova.getActivity(), this.wifiManager);
-		}
-		
-		@Override
-		public void onDestroy() {
-			super.onDestroy();
-			this.networkConnectivityReceiver.onDestroy();
-			this.networkScanReceiver.onDestroy();
-		}
-		
-	    /**
-	     * Executes the request.
-	     *
-	     * This method is called from the WebView thread.
-	     * To do a non-trivial amount of work, use:
-	     * cordova.getThreadPool().execute(runnable);
-	     *
-	     * To run on the UI thread, use:
-	     * cordova.getActivity().runOnUiThread(runnable);
-	     *
-	     * @param action The action to execute.
-	     * @param args The exec() arguments.
-	     * @param callbackContext The callback context used when calling back into JavaScript.
-	     * @return Whether the action was valid.
-	     */
-	 	@Override
-	     public boolean execute(String action
-	     		, final JSONArray args
-	     		, final CallbackContext callbackContext)
-	         throws JSONException {
-	 		
-	     	CordovaPluginLog.i(LOG_TAG, "call for action: " + action + "; args: " + args);
-	     	CordovaAction cordovaAction = null;
-	     	
-	     	if (action.equals("onNetworkStateChanged")) {
-	     		this.networkConnectivityReceiver.setNetworStateCallbackcontext(callbackContext);
-	     		return true;
-	     	}
-	     	else if (action.equals("onWifiStateChanged")) {
-	     		this.networkConnectivityReceiver.setWifistateCallbackcontext(callbackContext);
-	     		
-	     		return true;
-	     	}
-	     	else if (action.equals("onScanResultsAvaiblable")) {
-	     		this.networkScanReceiver.setScanResultCallback(callbackContext);
-	     		
-	     		return true;
-	     	}
-	     	else if (action.equals(CalculateSignalLevel.ACTION_NAME)) {
-	     		cordovaAction = new CalculateSignalLevel(action
-	     				, args
-	     				, callbackContext
-	     				, this.cordova
-	     				, this.wifiManager);
-	     	}
-	     	else if (action.equals(CompareSignalLevel.ACTION_NAME)) {
-	     		cordovaAction = new CompareSignalLevel(action
-	     				, args
-	     				, callbackContext
-	     				, this.cordova
-	     				, this.wifiManager);
-	     	}
-	     	else if (action.equals(DisableNetwork.ACTION_NAME)) {
-	     		cordovaAction = new DisableNetwork(action
-	     				, args
-	     				, callbackContext
-	     				, cordova
-	     				, wifiManager);
-	     	}
-	     	else if (action.equals(Disconnect.ACTION_NAME)) {
-	     		cordovaAction = new Disconnect(action
-	     				, args
-	     				, callbackContext
-	     				, this.cordova
-	     				, this.wifiManager);
-	     	}
-	     	else if (action.equals(EnableNetwork.ACTION_NAME)) {
-	     		cordovaAction = new EnableNetwork(action
-	     				, args
-	     				, callbackContext
-	     				, this.cordova
-	     				, this.wifiManager);
-	     	}
-	     	else if (action.equals(GetConfiguredNetworks.ACTION_NAME)) {
-	     		cordovaAction = new GetConfiguredNetworks(action
-	     				, args
-	     				, callbackContext
-	     				, this.cordova
-	     				, this.wifiManager);
-	     	}
-	     	else if (action.equals(GetConnectionInfo.ACTION_NAME)) {
-	     		cordovaAction = new GetConnectionInfo(action
-	     				, args
-	     				, callbackContext
-	     				, this.cordova
-	     				, this.wifiManager);
-	     	}
-	     	else if (action.equals(GetDhcpInfo.ACTION_NAME)) {
-	     		cordovaAction = new GetDhcpInfo(action
-	     				, args
-	     				, callbackContext
-	     				, this.cordova
-	     				, this.wifiManager);
-	     	}
-	     	else if (action.equals(GetWifiState.ACTION_NAME)) {
-	     		cordovaAction = new GetWifiState(action
-	     				, args
-	     				, callbackContext
-	     				, this.cordova
-	     				, this.wifiManager);
-	     	}
-	     	else if (action.equals(GetScanResults.ACTION_NAME)) {
-	     		cordovaAction = new GetScanResults	(action
-	     				, args
-	     				, callbackContext
-	     				, this.cordova
-	     				, this.wifiManager);
-	     	}
-	     	else if (action.equals(IsWifiEnabled.ACTION_NAME)) {
-	     		cordovaAction = new IsWifiEnabled(action
-	     				, args
-	     				, callbackContext
-	     				, this.cordova
-	     				, this.wifiManager);
-	     	}
-	     	else if (action.equals(Reassociate.ACTION_NAME)) {
-	     		cordovaAction = new Reassociate(action, args, callbackContext, this.cordova, this.wifiManager);
-	     	}
-	     	else if (action.equals(Reconnect.ACTION_NAME)) {
-	     		cordovaAction = new Reconnect(action, args, callbackContext, this.cordova, this.wifiManager);
-	     	}
-	     	else if (action.equals(SetWifiEnabled.ACTION_NAME)) {
-	     		cordovaAction = new SetWifiEnabled(action
-	     				, args
-	     				, callbackContext
-	     				, this.cordova
-	     				, this.wifiManager);
-	     	}
-	     	else if (action.equals(IsScanAlwaysAvailable.ACTION_NAME)) {
-	     		cordovaAction = new IsScanAlwaysAvailable(action, args, callbackContext, this.cordova, this.wifiManager);
-	     	}
-	     	else if (action.equals(StartScan.ACTION_NAME)) {
-	     		cordovaAction = new StartScan(action, args, callbackContext, this.cordova, this.wifiManager);
-	     	}
-	     	
-	     	if (cordovaAction != null) {
-	     		this.cordova.getThreadPool().execute(cordovaAction);
-	     		return true;
-	     	}
-	     	
-	     	return super.execute(action, args, callbackContext);
-	     }
+	public static void registerAction(String name, Class<? extends WifiManagerAction> action) {
+		actions.put(name, action);
+	}
+	
+   /**
+	* Called after plugin construction and fields have been initialized.
+	*/
+	@Override
+	public void pluginInitialize() {
+		super.pluginInitialize();
+		this.wifiManager = (WifiManager) this.cordova
+				.getActivity()
+				.getApplicationContext()
+				.getSystemService(Context.WIFI_SERVICE);
+		this.networkConnectivityReceiver = new NetworkConnectivityReceiver(this.cordova.getActivity());
+		this.networkScanReceiver = new NetworkScanReceiver(this.cordova.getActivity(), this.wifiManager);
+	}
+	
+	@Override
+	public void onDestroy() {
+		super.onDestroy();
+		this.networkConnectivityReceiver.onDestroy();
+		this.networkScanReceiver.onDestroy();
+	}
+	
+    /**
+     * Executes the request.
+     *
+     * This method is called from the WebView thread.
+     * To do a non-trivial amount of work, use:
+     * cordova.getThreadPool().execute(runnable);
+     *
+     * To run on the UI thread, use:
+     * cordova.getActivity().runOnUiThread(runnable);
+     *
+     * @param action The action to execute.
+     * @param args The exec() arguments.
+     * @param callbackContext The callback context used when calling back into JavaScript.
+     * @return Whether the action was valid.
+     */
+ 	@Override
+     public boolean execute(String action
+     		, final JSONArray args
+     		, final CallbackContext callbackContext)
+         throws JSONException {
+ 		
+     	CordovaPluginLog.i(LOG_TAG, "call for action: " + action + "; args: " + args);
+     	CordovaAction cordovaAction = null;
+     	
+     	if (action.equals("onNetworkStateChanged")) {
+     		this.networkConnectivityReceiver.setNetworStateCallbackcontext(callbackContext);
+     		return true;
+     	}
+     	else if (action.equals("onWifiStateChanged")) {
+     		this.networkConnectivityReceiver.setWifistateCallbackcontext(callbackContext);
+     		
+     		return true;
+     	}
+     	else if (action.equals("onScanResultsAvaiblable")) {
+     		this.networkScanReceiver.setScanResultCallback(callbackContext);
+     		
+     		return true;
+     	}
+     	else if (actions.containsKey(action)) {     		
+     		Class<? extends WifiManagerAction> actionClass = actions.get(action);
+     		
+     		CordovaPluginLog.d(LOG_TAG, "found action: " + actionClass.getName());
+     		
+     		try {
+				cordovaAction = actionClass.getConstructor(String.class
+						, JSONArray.class
+						, CallbackContext.class
+						, CordovaInterface.class
+						, WifiManager.class
+					)
+					.newInstance(action, args, callbackContext, this.cordova, this.wifiManager);
+			} catch (InstantiationException e) {
+				CordovaPluginLog.e(LOG_TAG, e.getMessage(), e);
+			} catch (IllegalAccessException e) {
+				CordovaPluginLog.e(LOG_TAG, e.getMessage(), e);
+			} catch (IllegalArgumentException e) {
+				CordovaPluginLog.e(LOG_TAG, e.getMessage(), e);
+			} catch (InvocationTargetException e) {
+				CordovaPluginLog.e(LOG_TAG, e.getMessage(), e);
+			} catch (NoSuchMethodException e) {
+				CordovaPluginLog.e(LOG_TAG, e.getMessage(), e);
+			} catch (SecurityException e) {
+				CordovaPluginLog.e(LOG_TAG, e.getMessage(), e);
+			}
+     	}
+     	
+     	if (cordovaAction != null) {
+     		this.cordova.getThreadPool().execute(cordovaAction);
+     		return true;
+     	}
+     	
+     	return super.execute(action, args, callbackContext);
+     }
 }

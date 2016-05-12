@@ -13,7 +13,7 @@ import android.net.wifi.WifiManager;
 
 public class GetConnectionInfo extends WifiManagerAction {
 	public static final String ACTION_NAME = "getConnectionInfo";
-
+	
 	public GetConnectionInfo(String action, JSONArray args, CallbackContext callbackContext, CordovaInterface cordova,
 			WifiManager wifiManager) {
 		super(action, args, callbackContext, cordova, wifiManager);
