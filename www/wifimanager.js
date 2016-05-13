@@ -52,6 +52,21 @@ self.onScanResultsAvailable = function (success, error) {
 };
 
 /*
+ * Add a new network description to the set of configured networks.
+ * The networkId field of the supplied configuration object is ignored.
+ * The new network will be marked DISABLED by default.
+ * To enable it, called enableNetwork(int, boolean).
+ *
+ * @param {Function} success         - Callback if action is successful.
+ * @param {Function} error           - Callback if action is not successful.
+ * @param {Object}   args            - An object containing the parameters.
+ */
+self.addNetwork = function (success, error, args) {
+    cordova.exec(success, error, feature, "addNetwork", [args]);
+}
+
+
+/*
  * Calculates the level of the signal. This should be used any time a signal is being shown.
  *
  * @param {Function} success         - Callback if action is successful.

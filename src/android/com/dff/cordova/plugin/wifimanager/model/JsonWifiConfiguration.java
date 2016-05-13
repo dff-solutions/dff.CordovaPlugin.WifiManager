@@ -8,9 +8,24 @@ import android.net.wifi.WifiConfiguration;
 
 public class JsonWifiConfiguration {
 	protected WifiConfiguration wifiConfiguration;
+	protected JSONObject jsonWifiConfiguration;
 	
 	private JsonWifiConfiguration(WifiConfiguration wifiConfiguration) {
 		this.wifiConfiguration = wifiConfiguration;
+	}
+	
+	private JsonWifiConfiguration(JSONObject jsonWifiConfiguration) {
+		this.jsonWifiConfiguration = jsonWifiConfiguration;
+	}
+	
+	public WifiConfiguration fromJson() throws JSONException {
+		this.wifiConfiguration = new WifiConfiguration();
+		
+		if (this.jsonWifiConfiguration != null) {
+			
+		}
+		
+		return this.wifiConfiguration;
 	}
 	
 	public JSONObject toJson() throws JSONException {
@@ -86,5 +101,9 @@ public class JsonWifiConfiguration {
 	
 	public static JsonWifiConfiguration getInstance(WifiConfiguration wifiConfiguration) {
 		return new JsonWifiConfiguration(wifiConfiguration);
+	}
+	
+	public static JsonWifiConfiguration getInstance(JSONObject jsonWifiConfiguration) {
+		return new JsonWifiConfiguration(jsonWifiConfiguration);
 	}
 }
