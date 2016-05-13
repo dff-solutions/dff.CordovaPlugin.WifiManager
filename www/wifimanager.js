@@ -187,6 +187,16 @@ self.isWifiEnabled = function (success, error) {
 };
 
 /**
+ * Check that the supplicant daemon is responding to requests.
+ *
+ * @param {Function} success         - Callback if action is successful.
+ * @param {Function} error           - Callback if action is not successful.
+ */
+self.pingSupplicant = function (success, error) {
+    cordova.exec(success, error, feature, "pingSupplicant", []);
+};
+
+/**
  * Reconnect to the currently active access point,
  * even if we are already connected.
  *
@@ -206,6 +216,28 @@ self.reassociate = function (success, error) {
  */
 self.reconnect = function (success, error) {
     cordova.exec(success, error, feature, "reconnect", []);
+};
+
+/**
+ * Remove the specified network from the list of configured networks.
+ *
+ * @param {Function} success         - Callback if action is successful.
+ * @param {Function} error           - Callback if action is not successful.
+ * @param {Object}   args            - An object containing the parameters.
+ * @param {Number}   args.netId      - Id of network to disable.
+ */
+self.removeNetwork = function (success, error) {
+    cordova.exec(success, error, feature, "removeNetwork", []);
+};
+
+/**
+ *  Tell the supplicant to persist the current list of configured networks.
+ *
+ * @param {Function} success         - Callback if action is successful.
+ * @param {Function} error           - Callback if action is not successful.
+ */
+self.saveConfiguration = function (success, error) {
+    cordova.exec(success, error, feature, "saveConfiguration", []);
 };
 
 /*

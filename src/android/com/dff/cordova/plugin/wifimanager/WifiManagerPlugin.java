@@ -23,8 +23,11 @@ import com.dff.cordova.plugin.wifimanager.action.GetScanResults;
 import com.dff.cordova.plugin.wifimanager.action.GetWifiState;
 import com.dff.cordova.plugin.wifimanager.action.IsScanAlwaysAvailable;
 import com.dff.cordova.plugin.wifimanager.action.IsWifiEnabled;
+import com.dff.cordova.plugin.wifimanager.action.PingSupplicant;
 import com.dff.cordova.plugin.wifimanager.action.Reassociate;
 import com.dff.cordova.plugin.wifimanager.action.Reconnect;
+import com.dff.cordova.plugin.wifimanager.action.RemoveNetwork;
+import com.dff.cordova.plugin.wifimanager.action.SaveConfiguration;
 import com.dff.cordova.plugin.wifimanager.action.SetWifiEnabled;
 import com.dff.cordova.plugin.wifimanager.action.StartScan;
 import com.dff.cordova.plugin.wifimanager.action.WifiManagerAction;
@@ -56,8 +59,11 @@ public class WifiManagerPlugin extends CommonPlugin {
 		registerAction(GetWifiState.ACTION_NAME, GetWifiState.class);
 		registerAction(IsScanAlwaysAvailable.ACTION_NAME, IsScanAlwaysAvailable.class);
 		registerAction(IsWifiEnabled.ACTION_NAME, IsWifiEnabled.class);
+		registerAction(PingSupplicant.ACTION_NAME, PingSupplicant.class);
 		registerAction(Reassociate.ACTION_NAME, Reassociate.class);
 		registerAction(Reconnect.ACTION_NAME, Reconnect.class);
+		registerAction(RemoveNetwork.ACTION_NAME, RemoveNetwork.class);
+		registerAction(SaveConfiguration.ACTION_NAME, SaveConfiguration.class);
 		registerAction(SetWifiEnabled.ACTION_NAME, SetWifiEnabled.class);
 		registerAction(StartScan.ACTION_NAME, StartScan.class);
 	}

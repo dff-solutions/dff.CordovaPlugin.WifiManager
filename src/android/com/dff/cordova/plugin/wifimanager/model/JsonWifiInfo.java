@@ -1,12 +1,20 @@
 package com.dff.cordova.plugin.wifimanager.model;
 
+import java.math.BigInteger;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import com.dff.cordova.plugin.common.log.CordovaPluginLog;
 
 import android.net.NetworkInfo;
 import android.net.wifi.WifiInfo;
 
 public class JsonWifiInfo {
+	public static final String LOG_TAG = "JsonWifiInfo";
+	
 	protected WifiInfo wifiInfo;
 	
 	private JsonWifiInfo(WifiInfo wifiInfo) {
@@ -19,7 +27,19 @@ public class JsonWifiInfo {
 		
 		if (this.wifiInfo != null) {
 			jsonWifiInfo.put("hiddenSSID", this.wifiInfo.getHiddenSSID());
-			jsonWifiInfo.put("ipAddress", this.wifiInfo.getIpAddress());
+			
+			int ipAddress = this.wifiInfo.getIpAddress();
+			byte[] ipByteArray = BigInteger.valueOf(ipAddress).toByteArray();
+			
+		    String ipAddressString;
+		    try {
+		        ipAddressString = InetAddress.getByAddress(ipByteArray).getHostAddress();
+		    } catch (UnknownHostException ex) {
+		        CordovaPluginLog.e(LOG_TAG, "Unable to get host address.");
+		        ipAddressString = null;
+		    }
+			
+			jsonWifiInfo.put("ipAddress", ipAddressString);
 			jsonWifiInfo.put("linkSpeed", this.wifiInfo.getLinkSpeed());
 			jsonWifiInfo.put("networkId", this.wifiInfo.getNetworkId());
 			jsonWifiInfo.put("rssi", this.wifiInfo.getRssi());
