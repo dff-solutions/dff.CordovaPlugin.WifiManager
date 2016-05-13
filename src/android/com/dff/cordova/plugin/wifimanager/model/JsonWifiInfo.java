@@ -3,6 +3,7 @@ package com.dff.cordova.plugin.wifimanager.model;
 import java.math.BigInteger;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.nio.ByteOrder;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -29,6 +30,11 @@ public class JsonWifiInfo {
 			jsonWifiInfo.put("hiddenSSID", this.wifiInfo.getHiddenSSID());
 			
 			int ipAddress = this.wifiInfo.getIpAddress();
+			
+			if (ByteOrder.nativeOrder().equals(ByteOrder.LITTLE_ENDIAN)) {
+				ipAddress = Integer.reverseBytes(ipAddress);
+			}
+			
 			byte[] ipByteArray = BigInteger.valueOf(ipAddress).toByteArray();
 			
 		    String ipAddressString;
