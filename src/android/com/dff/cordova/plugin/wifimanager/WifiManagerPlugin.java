@@ -46,7 +46,7 @@ public class WifiManagerPlugin extends CommonPlugin {
 	protected WifiManager wifiManager;
 	
 	public WifiManagerPlugin() {
-		super();
+		super(LOG_TAG);
 		
 		registerAction(AddNetwork.ACTION_NAME, AddNetwork.class);
 		registerAction(CalculateSignalLevel.ACTION_NAME, CalculateSignalLevel.class);
