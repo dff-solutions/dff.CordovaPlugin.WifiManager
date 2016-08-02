@@ -24,8 +24,10 @@ public class NetworkScanReceiver extends BroadcastReceiver {
 	
 	protected WifiManager wifiManager;
 	protected CallbackContext scanResultCallback;
+	protected Activity activity;
 	
 	public NetworkScanReceiver(Activity activity, WifiManager wifiManager) {
+		this.activity = activity;
 		this.wifiManager = wifiManager;
 		
 		IntentFilter scanResultsFilter = new IntentFilter(WifiManager.SCAN_RESULTS_AVAILABLE_ACTION);
@@ -33,6 +35,10 @@ public class NetworkScanReceiver extends BroadcastReceiver {
 	}
 	
 	public void onDestroy() {
+		if (this.activity != null) {
+			this.activity.unregisterReceiver(this);
+		}
+		
 		if (this.scanResultCallback != null) {
 			scanResultCallback.success();
 		}

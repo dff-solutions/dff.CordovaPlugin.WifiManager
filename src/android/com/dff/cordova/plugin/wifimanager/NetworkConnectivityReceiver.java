@@ -24,6 +24,8 @@ public class NetworkConnectivityReceiver extends BroadcastReceiver {
 	private static final String LOG_TAG = "com.dff.cordova.plugin.wifimanager.NetworkConnectivityReceiver";
 	
 	protected CallbackContext networStateCallbackcontext;
+	protected Activity activity;
+	
 	public CallbackContext getNetworStateCallbackcontext() {
 		return networStateCallbackcontext;
 	}
@@ -43,6 +45,8 @@ public class NetworkConnectivityReceiver extends BroadcastReceiver {
 	protected CallbackContext wifistateCallbackcontext;
 	
 	public NetworkConnectivityReceiver(Activity activity) {
+		this.activity = activity;
+		
 		IntentFilter networkStateFilter = new IntentFilter();
 		networkStateFilter.addAction(WifiManager.NETWORK_STATE_CHANGED_ACTION);
 		networkStateFilter.addAction(WifiManager.WIFI_STATE_CHANGED_ACTION);
@@ -51,6 +55,10 @@ public class NetworkConnectivityReceiver extends BroadcastReceiver {
 	}
 	
 	public void onDestroy() {
+		if (this.activity != null) {
+			this.activity.unregisterReceiver(this);
+		}
+		
 		if (this.networStateCallbackcontext != null) {
 			this.networStateCallbackcontext.success();
 		}
