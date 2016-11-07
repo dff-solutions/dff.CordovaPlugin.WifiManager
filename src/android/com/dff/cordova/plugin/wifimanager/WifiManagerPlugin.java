@@ -40,37 +40,33 @@ public class WifiManagerPlugin extends CommonPlugin {
 	protected NetworkConnectivityReceiver networkConnectivityReceiver;
 	protected NetworkScanReceiver networkScanReceiver;
 	
-	public static HashMap<String, Class<? extends WifiManagerAction>> actions = new HashMap<String, Class<? extends WifiManagerAction>>();
+	protected HashMap<String, Class<? extends WifiManagerAction>> actions = new HashMap<String, Class<? extends WifiManagerAction>>();
 	
 	protected WifiManager wifiManager;
 	
 	public WifiManagerPlugin() {
 		super(LOG_TAG);
 		
-		// registerAction(AddNetwork.ACTION_NAME, AddNetwork.class);
-		registerAction(CalculateSignalLevel.ACTION_NAME, CalculateSignalLevel.class);
-		registerAction(CompareSignalLevel.ACTION_NAME, CompareSignalLevel.class);
-		registerAction(DisableNetwork.ACTION_NAME, DisableNetwork.class);
-		registerAction(Disconnect.ACTION_NAME, Disconnect.class);
-		registerAction(EnableNetwork.ACTION_NAME, EnableNetwork.class);
-		registerAction(GetConfiguredNetworks.ACTION_NAME, GetConfiguredNetworks.class);
-		registerAction(GetConnectionInfo.ACTION_NAME, GetConnectionInfo.class);		
-		registerAction(GetDhcpInfo.ACTION_NAME, GetDhcpInfo.class);
-		registerAction(GetScanResults.ACTION_NAME, GetScanResults.class);
-		registerAction(GetWifiState.ACTION_NAME, GetWifiState.class);
-		registerAction(IsScanAlwaysAvailable.ACTION_NAME, IsScanAlwaysAvailable.class);
-		registerAction(IsWifiEnabled.ACTION_NAME, IsWifiEnabled.class);
-		registerAction(PingSupplicant.ACTION_NAME, PingSupplicant.class);
-		registerAction(Reassociate.ACTION_NAME, Reassociate.class);
-		registerAction(Reconnect.ACTION_NAME, Reconnect.class);
-		registerAction(RemoveNetwork.ACTION_NAME, RemoveNetwork.class);
-		registerAction(SaveConfiguration.ACTION_NAME, SaveConfiguration.class);
-		registerAction(SetWifiEnabled.ACTION_NAME, SetWifiEnabled.class);
-		registerAction(StartScan.ACTION_NAME, StartScan.class);
-	}
-	
-	public static void registerAction(String name, Class<? extends WifiManagerAction> action) {
-		actions.put(name, action);
+		// actions.put(AddNetwork.ACTION_NAME, AddNetwork.class);
+		actions.put(CalculateSignalLevel.ACTION_NAME, CalculateSignalLevel.class);
+		actions.put(CompareSignalLevel.ACTION_NAME, CompareSignalLevel.class);
+		actions.put(DisableNetwork.ACTION_NAME, DisableNetwork.class);
+		actions.put(Disconnect.ACTION_NAME, Disconnect.class);
+		actions.put(EnableNetwork.ACTION_NAME, EnableNetwork.class);
+		actions.put(GetConfiguredNetworks.ACTION_NAME, GetConfiguredNetworks.class);
+		actions.put(GetConnectionInfo.ACTION_NAME, GetConnectionInfo.class);		
+		actions.put(GetDhcpInfo.ACTION_NAME, GetDhcpInfo.class);
+		actions.put(GetScanResults.ACTION_NAME, GetScanResults.class);
+		actions.put(GetWifiState.ACTION_NAME, GetWifiState.class);
+		actions.put(IsScanAlwaysAvailable.ACTION_NAME, IsScanAlwaysAvailable.class);
+		actions.put(IsWifiEnabled.ACTION_NAME, IsWifiEnabled.class);
+		actions.put(PingSupplicant.ACTION_NAME, PingSupplicant.class);
+		actions.put(Reassociate.ACTION_NAME, Reassociate.class);
+		actions.put(Reconnect.ACTION_NAME, Reconnect.class);
+		actions.put(RemoveNetwork.ACTION_NAME, RemoveNetwork.class);
+		actions.put(SaveConfiguration.ACTION_NAME, SaveConfiguration.class);
+		actions.put(SetWifiEnabled.ACTION_NAME, SetWifiEnabled.class);
+		actions.put(StartScan.ACTION_NAME, StartScan.class);
 	}
 	
    /**
@@ -160,7 +156,7 @@ public class WifiManagerPlugin extends CommonPlugin {
      	}
      	
      	if (cordovaAction != null) {
-     		this.cordova.getThreadPool().execute(cordovaAction);
+     		super.actionHandler.post(cordovaAction);
      		return true;
      	}
      	

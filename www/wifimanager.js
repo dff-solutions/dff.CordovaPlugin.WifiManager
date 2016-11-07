@@ -8,8 +8,9 @@
 'use strict';
 
 var cordova = require('cordova');
-var feature = "WifiManager";
-var self = {};
+function WifiManager(feature) {
+    this.feature = feature;
+};
 
 /*
  * Register callbacks for wifimanager log messages.
@@ -17,8 +18,8 @@ var self = {};
  * @param {Function} success         - Callback if action is successful.
  * @param {Function} error           - Callback if action is not successful.
  */
-self.onLog = function (success, error) {
-    cordova.exec(success, error, feature, "onLog", []);
+WifiManager.prototype.onLog = function (success, error) {
+    cordova.exec(success, error, this.feature, "onLog", []);
 };
 
 /*
@@ -27,8 +28,8 @@ self.onLog = function (success, error) {
  * @param {Function} success         - Callback if action is successful.
  * @param {Function} error           - Callback if action is not successful.
  */
-self.onNetworkStateChanged = function (success, error) {
-    cordova.exec(success, error, feature, "onNetworkStateChanged", []);
+WifiManager.prototype.onNetworkStateChanged = function (success, error) {
+    cordova.exec(success, error, this.feature, "onNetworkStateChanged", []);
 };
 
 /*
@@ -37,8 +38,8 @@ self.onNetworkStateChanged = function (success, error) {
  * @param {Function} success         - Callback if action is successful.
  * @param {Function} error           - Callback if action is not successful.
  */
-self.onWifiStateChanged = function (success, error) {
-    cordova.exec(success, error, feature, "onWifiStateChanged", []);
+WifiManager.prototype.onWifiStateChanged = function (success, error) {
+    cordova.exec(success, error, this.feature, "onWifiStateChanged", []);
 };
 
 /*
@@ -47,8 +48,8 @@ self.onWifiStateChanged = function (success, error) {
  * @param {Function} success         - Callback if action is successful.
  * @param {Function} error           - Callback if action is not successful.
  */
-self.onScanResultsAvailable = function (success, error) {
-    cordova.exec(success, error, feature, "onScanResultsAvaiblable", []);
+WifiManager.prototype.onScanResultsAvailable = function (success, error) {
+    cordova.exec(success, error, this.feature, "onScanResultsAvaiblable", []);
 };
 
 /*
@@ -61,8 +62,8 @@ self.onScanResultsAvailable = function (success, error) {
  * @param {Function} error           - Callback if action is not successful.
  * @param {Object}   args            - An object containing the parameters.
  */
-self.addNetwork = function (success, error, args) {
-    cordova.exec(success, error, feature, "addNetwork", [args]);
+WifiManager.prototype.addNetwork = function (success, error, args) {
+    cordova.exec(success, error, this.feature, "addNetwork", [args]);
 }
 
 
@@ -75,8 +76,8 @@ self.addNetwork = function (success, error, args) {
  * @param {Number}   args.rssi       -  The power of the signal measured in RSSI.
  * @param {Number}   args.numLevels  -  The number of levels to consider in the calculated level.
  */
-self.calculateSignalLevel = function (success, error, args) {
-    cordova.exec(success, error, feature, "calculateSignalLevel", [args]);
+WifiManager.prototype.calculateSignalLevel = function (success, error, args) {
+    cordova.exec(success, error, this.feature, "calculateSignalLevel", [args]);
 }
 
 /*
@@ -88,8 +89,8 @@ self.calculateSignalLevel = function (success, error, args) {
  * @param {Number}   args.rssiA      - The power of the first signal measured in RSSI.
  * @param {Number}   args.rssiB      - The power of the second signal measured in RSSI.
  */
-self.compareSignalLevel = function (success, error, args) {
-    cordova.exec(success, error, feature, "compareSignalLevel", [args]);
+WifiManager.prototype.compareSignalLevel = function (success, error, args) {
+    cordova.exec(success, error, this.feature, "compareSignalLevel", [args]);
 }
 
 /*
@@ -100,8 +101,8 @@ self.compareSignalLevel = function (success, error, args) {
  * @param {Object}   args            - An object containing the parameters.
  * @param {Number}   args.netId      - Id of network to disable.
  */
-self.disableNetwork = function (success, error, args) {
-    cordova.exec(success, error, feature, "disableNetwork", [args]);
+WifiManager.prototype.disableNetwork = function (success, error, args) {
+    cordova.exec(success, error, this.feature, "disableNetwork", [args]);
 };
 
 /*
@@ -110,8 +111,8 @@ self.disableNetwork = function (success, error, args) {
  * @param {Function} success         - Callback if action is successful.
  * @param {Function} error           - Callback if action is not successful.
  */
-self.disconnect = function (success, error) {
-    cordova.exec(success, error, feature, "disconnect", []);
+WifiManager.prototype.disconnect = function (success, error) {
+    cordova.exec(success, error, this.feature, "disconnect", []);
 };
 
 /*
@@ -124,8 +125,8 @@ self.disconnect = function (success, error) {
  * @param {Number}   args.disableOthers -  if true, disable all other networks.
  * The way to select a particular network to connect to is specify true for this parameter.
  */
-self.enableNetwork = function (success, error, args) {
-    cordova.exec(success, error, feature, "enableNetwork", [args]);
+WifiManager.prototype.enableNetwork = function (success, error, args) {
+    cordova.exec(success, error, this.feature, "enableNetwork", [args]);
 };
 
 /*
@@ -134,8 +135,8 @@ self.enableNetwork = function (success, error, args) {
  * @param {Function} success         - Callback if action is successful.
  * @param {Function} error           - Callback if action is not successful.
  */
-self.getConfiguredNetworks = function (success, error, args) {
-    cordova.exec(success, error, feature, "getConfiguredNetworks", [args]);
+WifiManager.prototype.getConfiguredNetworks = function (success, error, args) {
+    cordova.exec(success, error, this.feature, "getConfiguredNetworks", [args]);
 };
 
 /*
@@ -144,8 +145,8 @@ self.getConfiguredNetworks = function (success, error, args) {
  * @param {Function} success         - Callback if action is successful.
  * @param {Function} error           - Callback if action is not successful.
  */
-self.getConnectionInfo = function (success, error) {
-    cordova.exec(success, error, feature, "getConnectionInfo", []);
+WifiManager.prototype.getConnectionInfo = function (success, error) {
+    cordova.exec(success, error, this.feature, "getConnectionInfo", []);
 };
 
 /*
@@ -154,8 +155,8 @@ self.getConnectionInfo = function (success, error) {
  * @param {Function} success         - Callback if action is successful.
  * @param {Function} error           - Callback if action is not successful.
  */
-self.getDhcpInfo = function (success, error) {
-    cordova.exec(success, error, feature, "getDhcpInfo", []);
+WifiManager.prototype.getDhcpInfo = function (success, error) {
+    cordova.exec(success, error, this.feature, "getDhcpInfo", []);
 };
 
 /*
@@ -164,8 +165,8 @@ self.getDhcpInfo = function (success, error) {
  * @param {Function} success         - Callback if action is successful.
  * @param {Function} error           - Callback if action is not successful.
  */
-self.getScanResults = function (success, error) {
-    cordova.exec(success, error, feature, "getScanResults", []);
+WifiManager.prototype.getScanResults = function (success, error) {
+    cordova.exec(success, error, this.feature, "getScanResults", []);
 };
 
 /*
@@ -174,8 +175,8 @@ self.getScanResults = function (success, error) {
  * @param {Function} success         - Callback if action is successful.
  * @param {Function} error           - Callback if action is not successful.
  */
-self.getWifiState = function (success, error) {
-    cordova.exec(success, error, feature, "getWifiState", []);
+WifiManager.prototype.getWifiState = function (success, error) {
+    cordova.exec(success, error, this.feature, "getWifiState", []);
 };
 
 /**
@@ -186,8 +187,8 @@ self.getWifiState = function (success, error) {
  * @param {Function} success         - Callback if action is successful.
  * @param {Function} error           - Callback if action is not successful.
  */
-self.isScanAlwaysAvailable = function (success, error) {
-    cordova.exec(success, error, feature, "isScanAlwaysAvailable", []);
+WifiManager.prototype.isScanAlwaysAvailable = function (success, error) {
+    cordova.exec(success, error, this.feature, "isScanAlwaysAvailable", []);
 };
 
 /**
@@ -197,8 +198,8 @@ self.isScanAlwaysAvailable = function (success, error) {
  * @param {Function} success         - Callback if action is successful.
  * @param {Function} error           - Callback if action is not successful.
  */
-self.isWifiEnabled = function (success, error) {
-    cordova.exec(success, error, feature, "isWifiEnabled", []);
+WifiManager.prototype.isWifiEnabled = function (success, error) {
+    cordova.exec(success, error, this.feature, "isWifiEnabled", []);
 };
 
 /**
@@ -207,8 +208,8 @@ self.isWifiEnabled = function (success, error) {
  * @param {Function} success         - Callback if action is successful.
  * @param {Function} error           - Callback if action is not successful.
  */
-self.pingSupplicant = function (success, error) {
-    cordova.exec(success, error, feature, "pingSupplicant", []);
+WifiManager.prototype.pingSupplicant = function (success, error) {
+    cordova.exec(success, error, this.feature, "pingSupplicant", []);
 };
 
 /**
@@ -218,8 +219,8 @@ self.pingSupplicant = function (success, error) {
  * @param {Function} success         - Callback if action is successful.
  * @param {Function} error           - Callback if action is not successful.
  */
-self.reassociate = function (success, error) {
-    cordova.exec(success, error, feature, "reassociate", []);
+WifiManager.prototype.reassociate = function (success, error) {
+    cordova.exec(success, error, this.feature, "reassociate", []);
 };
 
 /**
@@ -229,8 +230,8 @@ self.reassociate = function (success, error) {
  * @param {Function} success         - Callback if action is successful.
  * @param {Function} error           - Callback if action is not successful.
  */
-self.reconnect = function (success, error) {
-    cordova.exec(success, error, feature, "reconnect", []);
+WifiManager.prototype.reconnect = function (success, error) {
+    cordova.exec(success, error, this.feature, "reconnect", []);
 };
 
 /**
@@ -241,8 +242,8 @@ self.reconnect = function (success, error) {
  * @param {Object}   args            - An object containing the parameters.
  * @param {Number}   args.netId      - Id of network to disable.
  */
-self.removeNetwork = function (success, error) {
-    cordova.exec(success, error, feature, "removeNetwork", []);
+WifiManager.prototype.removeNetwork = function (success, error) {
+    cordova.exec(success, error, this.feature, "removeNetwork", []);
 };
 
 /**
@@ -251,8 +252,8 @@ self.removeNetwork = function (success, error) {
  * @param {Function} success         - Callback if action is successful.
  * @param {Function} error           - Callback if action is not successful.
  */
-self.saveConfiguration = function (success, error) {
-    cordova.exec(success, error, feature, "saveConfiguration", []);
+WifiManager.prototype.saveConfiguration = function (success, error) {
+    cordova.exec(success, error, this.feature, "saveConfiguration", []);
 };
 
 /*
@@ -263,8 +264,8 @@ self.saveConfiguration = function (success, error) {
  * @param {Object}   args            - An object containing the parameters.
  * @param {Number}   args.enabled    - true to enable, false to disable.
  */
-self.setWifiEnabled = function (success, error, args) {
-    cordova.exec(success, error, feature, "setWifiEnabled", [args]);
+WifiManager.prototype.setWifiEnabled = function (success, error, args) {
+    cordova.exec(success, error, this.feature, "setWifiEnabled", [args]);
 };
 
 /**
@@ -275,8 +276,8 @@ self.setWifiEnabled = function (success, error, args) {
  * @param {Function} error           - Callback if action is not successful.
  * @return {[type]}         [description]
  */
-self.startScan = function (success, error) {
-    cordova.exec(success, error, feature, "startScan", [args]);
+WifiManager.prototype.startScan = function (success, error) {
+    cordova.exec(success, error, this.feature, "startScan", [args]);
 };
 
-module.exports = self;
+module.exports = new WifiManager("WifiManager");
