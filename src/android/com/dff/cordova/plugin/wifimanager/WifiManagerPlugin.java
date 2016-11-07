@@ -11,7 +11,6 @@ import org.json.JSONException;
 import com.dff.cordova.plugin.common.CommonPlugin;
 import com.dff.cordova.plugin.common.action.CordovaAction;
 import com.dff.cordova.plugin.common.log.CordovaPluginLog;
-import com.dff.cordova.plugin.wifimanager.action.AddNetwork;
 import com.dff.cordova.plugin.wifimanager.action.CalculateSignalLevel;
 import com.dff.cordova.plugin.wifimanager.action.CompareSignalLevel;
 import com.dff.cordova.plugin.wifimanager.action.DisableNetwork;
@@ -48,7 +47,7 @@ public class WifiManagerPlugin extends CommonPlugin {
 	public WifiManagerPlugin() {
 		super(LOG_TAG);
 		
-		registerAction(AddNetwork.ACTION_NAME, AddNetwork.class);
+		// registerAction(AddNetwork.ACTION_NAME, AddNetwork.class);
 		registerAction(CalculateSignalLevel.ACTION_NAME, CalculateSignalLevel.class);
 		registerAction(CompareSignalLevel.ACTION_NAME, CompareSignalLevel.class);
 		registerAction(DisableNetwork.ACTION_NAME, DisableNetwork.class);
