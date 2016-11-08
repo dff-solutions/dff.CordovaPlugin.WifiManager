@@ -135,8 +135,8 @@ WifiManager.prototype.enableNetwork = function (success, error, args) {
  * @param {Function} success         - Callback if action is successful.
  * @param {Function} error           - Callback if action is not successful.
  */
-WifiManager.prototype.getConfiguredNetworks = function (success, error, args) {
-    cordova.exec(success, error, this.feature, "getConfiguredNetworks", [args]);
+WifiManager.prototype.getConfiguredNetworks = function (success, error) {
+    cordova.exec(success, error, this.feature, "getConfiguredNetworks", []);
 };
 
 /*
@@ -242,8 +242,8 @@ WifiManager.prototype.reconnect = function (success, error) {
  * @param {Object}   args            - An object containing the parameters.
  * @param {Number}   args.netId      - Id of network to disable.
  */
-WifiManager.prototype.removeNetwork = function (success, error) {
-    cordova.exec(success, error, this.feature, "removeNetwork", []);
+WifiManager.prototype.removeNetwork = function (success, error, args) {
+    cordova.exec(success, error, this.feature, "removeNetwork", [args]);
 };
 
 /**
@@ -277,7 +277,7 @@ WifiManager.prototype.setWifiEnabled = function (success, error, args) {
  * @return {[type]}         [description]
  */
 WifiManager.prototype.startScan = function (success, error) {
-    cordova.exec(success, error, this.feature, "startScan", [args]);
+    cordova.exec(success, error, this.feature, "startScan", []);
 };
 
 module.exports = new WifiManager("WifiManager");
