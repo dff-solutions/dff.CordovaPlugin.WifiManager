@@ -140,7 +140,7 @@ WifiManager.prototype.getConfiguredNetworks = function (success, error) {
 };
 
 /*
- * Register callbacks for wifimanager getConnectionInfo messages.
+ * Return dynamic information about the current Wi-Fi connection, if any is active.
  *
  * @param {Function} success         - Callback if action is successful.
  * @param {Function} error           - Callback if action is not successful.
@@ -170,7 +170,7 @@ WifiManager.prototype.getScanResults = function (success, error) {
 };
 
 /*
- * Register callbacks for wifimanager getWifiState messages.
+ * Gets the Wi-Fi enabled state.
  *
  * @param {Function} success         - Callback if action is successful.
  * @param {Function} error           - Callback if action is not successful.

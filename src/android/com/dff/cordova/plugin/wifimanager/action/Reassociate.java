@@ -22,10 +22,10 @@ public class Reassociate extends WifiManagerAction {
 		
 		try {
 			if (this.wifiManager.reassociate()) {
-				this.callbackContext.success();
+				this.callbackContext.success(1);
 			}
 			else {
-				this.callbackContext.error("could not reassociate");
+				this.callbackContext.success(0);
 			}
 		}
 		catch(Exception e){
