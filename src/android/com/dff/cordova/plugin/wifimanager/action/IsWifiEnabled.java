@@ -23,15 +23,12 @@ public class IsWifiEnabled extends WifiManagerAction {
 		super.run();
 		
 		try {
-			JSONObject jsonResult = new JSONObject();
-			jsonResult.put("enabled", this.wifiManager.isWifiEnabled());
-			
-			this.callbackContext.success(jsonResult);		
-			
-		}
-		catch(JSONException e) {
-			CordovaPluginLog.e(this.getClass().getName(), e.getMessage(), e);
-			this.callbackContext.error(e.getMessage());
+			if (this.wifiManager.isWifiEnabled()) {
+				this.callbackContext.success(1);
+			}
+			else {
+				this.callbackContext.success(0);
+			}
 		}
 		catch(Exception e){
 			CordovaPluginLog.e(this.getClass().getName(), e.getMessage(), e);

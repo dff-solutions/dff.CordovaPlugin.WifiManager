@@ -302,7 +302,7 @@ WifiManager
 ```js
 /**
  * Check if scanning is always available.
- * success callback result contains "isScanAlwaysAvailable" that indicates
+ * success callback result contains 1 or 0 that indicates
  * if apps can issue startScan event if Wi-Fi is turned off.
  *
  * @name isScanAlwaysAvailable
@@ -310,8 +310,8 @@ WifiManager
  * @param {function} error Error callback
  */
 WifiManager
-  .isScanAlwaysAvailable(function (result) {
-      console.log(result.isScanAlwaysAvailable);
+  .isScanAlwaysAvailable(function (isScanAlwaysAvailable) {
+      console.log(!!isScanAlwaysAvailable);
   }, function (reason) {
       console.error(reason);
   });
@@ -321,7 +321,7 @@ WifiManager
 
 ```js
 /**
- * Callback result contains "enabled" that indicates whether Wi-Fi is
+ * Callback result contains 1 or 0 that indicates whether Wi-Fi is
  * enabled or disabled.
  *
  * @name isWifiEnabled
@@ -329,8 +329,8 @@ WifiManager
  * @param {function} error Error callback
  */
 WifiManager
-  .isWifiEnabled(function (result) {
-      console.log(result.enabled);
+  .isWifiEnabled(function (enabled) {
+      console.log(!!enabled);
   }, function (reason) {
       console.error(reason);
   });

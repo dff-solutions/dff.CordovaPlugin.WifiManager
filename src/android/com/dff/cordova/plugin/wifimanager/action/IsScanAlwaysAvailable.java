@@ -23,14 +23,12 @@ public class IsScanAlwaysAvailable extends WifiManagerAction {
 		super.run();
 		
 		try {
-			JSONObject jsonResult = new JSONObject();
-			jsonResult.put("isScanAlwaysAvailable", this.wifiManager.isScanAlwaysAvailable());
-			
-			this.callbackContext.success(jsonResult);
-		}
-		catch(JSONException e) {
-			CordovaPluginLog.e(this.getClass().getName(), e.getMessage(), e);
-			this.callbackContext.error(e.getMessage());
+			if(this.wifiManager.isScanAlwaysAvailable()) {
+				this.callbackContext.success(1);
+			}
+			else {
+				this.callbackContext.success(0);
+			}
 		}
 		catch(Exception e){
 			CordovaPluginLog.e(this.getClass().getName(), e.getMessage(), e);
