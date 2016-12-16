@@ -45,10 +45,10 @@ public class EnableNetwork extends WifiManagerAction {
 			boolean succeeded = this.wifiManager.enableNetwork(netId, disableOthers);
 			
 			if (succeeded) {
-				this.callbackContext.success();
+				this.callbackContext.success(1);
 			}
 			else {
-				this.callbackContext.error("could not enable network: " + netId + " disableOthers: " + disableOthers);
+				this.callbackContext.success(0);
 			}
 			
 		}

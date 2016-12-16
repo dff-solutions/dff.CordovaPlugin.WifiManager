@@ -39,10 +39,10 @@ public class RemoveNetwork extends WifiManagerAction {
 			boolean succeeded = this.wifiManager.removeNetwork(netId);
 			
 			if (succeeded) {
-				this.callbackContext.success();
+				this.callbackContext.success(1);
 			}
 			else {
-				this.callbackContext.error("could not remove network: " + netId);
+				this.callbackContext.success(0);
 			}
 			
 		}

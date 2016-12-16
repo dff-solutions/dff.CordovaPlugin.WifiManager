@@ -11,7 +11,6 @@ import org.json.JSONException;
 import com.dff.cordova.plugin.common.log.CordovaPluginLog;
 import com.dff.cordova.plugin.wifimanager.model.JsonScanResult;
 
-import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -24,19 +23,19 @@ public class NetworkScanReceiver extends BroadcastReceiver {
 	
 	protected WifiManager wifiManager;
 	protected CallbackContext scanResultCallback;
-	protected Activity activity;
+	protected Context context;
 	
-	public NetworkScanReceiver(Activity activity, WifiManager wifiManager) {
-		this.activity = activity;
+	public NetworkScanReceiver(Context context, WifiManager wifiManager) {
+		this.context = context;
 		this.wifiManager = wifiManager;
 		
 		IntentFilter scanResultsFilter = new IntentFilter(WifiManager.SCAN_RESULTS_AVAILABLE_ACTION);
-		activity.registerReceiver(this, scanResultsFilter);
+		context.registerReceiver(this, scanResultsFilter);
 	}
 	
 	public void onDestroy() {
-		if (this.activity != null) {
-			this.activity.unregisterReceiver(this);
+		if (this.context!= null) {
+			this.context.unregisterReceiver(this);
 		}
 		
 		if (this.scanResultCallback != null) {

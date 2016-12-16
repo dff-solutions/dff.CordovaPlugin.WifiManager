@@ -22,10 +22,10 @@ public class StartScan extends WifiManagerAction {
 		
 		try {
 			if (this.wifiManager.startScan()) {
-				this.callbackContext.success();
+				this.callbackContext.success(1);
 			}
 			else {
-				this.callbackContext.error("could not start scan");
+				this.callbackContext.success(0);
 			}
 		}
 		catch(Exception e){

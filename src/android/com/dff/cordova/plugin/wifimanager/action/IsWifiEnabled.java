@@ -3,8 +3,6 @@ package com.dff.cordova.plugin.wifimanager.action;
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaInterface;
 import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import com.dff.cordova.plugin.common.log.CordovaPluginLog;
 

@@ -22,10 +22,11 @@ public class Disconnect extends WifiManagerAction {
 		
 		try {			
 			if (this.wifiManager.disconnect()) {
-				this.callbackContext.success();
+				this.callbackContext.success(1);
 			}
 			else {
-				this.callbackContext.error("could not disconnect from currently active access point");
+				
+				this.callbackContext.success(0);
 			}
 			
 		}

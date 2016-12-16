@@ -37,10 +37,10 @@ public class SetWifiEnabled extends WifiManagerAction {
 			enabled = jsonArgs.getBoolean("enabled");
 			
 			if (this.wifiManager.setWifiEnabled(enabled)) {
-				this.callbackContext.success();
+				this.callbackContext.success(1);
 			}
 			else {
-				this.callbackContext.error("could not set wifi enabled: " + enabled);
+				this.callbackContext.success(0);
 			}
 		}
 		catch(JSONException e) {

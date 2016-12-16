@@ -22,10 +22,11 @@ public class Reconnect extends WifiManagerAction {
 		
 		try {
 			if (this.wifiManager.reconnect()) {
-				this.callbackContext.success();
+				this.callbackContext.success(1);
 			}
 			else {
-				this.callbackContext.error("could not reconnect");
+				this.callbackContext.success(0);
+				;
 			}
 		}
 		catch(Exception e){

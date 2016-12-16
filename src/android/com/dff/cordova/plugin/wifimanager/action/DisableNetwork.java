@@ -39,10 +39,10 @@ public class DisableNetwork extends WifiManagerAction {
 			boolean disabled = this.wifiManager.disableNetwork(netId);
 			
 			if (disabled) {
-				this.callbackContext.success();
+				this.callbackContext.success(1);
 			}
 			else {
-				this.callbackContext.error("could not disable network: " + netId);
+				this.callbackContext.success(0);
 			}
 			
 		}
