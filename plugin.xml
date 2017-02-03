@@ -1,87 +1,127 @@
-<?xml version="1.0" encoding="UTF-8"?> 
-<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0" 
-    id="com.dff.cordova.plugin.wifimanager"
-    version="0.0.1">
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
+        id="dff-cordova-plugin-wifimanager"
+        version="1.0.0">
 
     <name>WifiManager</name>
     <description>WifiManager Plugin</description>
     <author>dff solutions</author>
     <keywords>phonegap,cordova,wifi,dff</keywords>
- 
-     <js-module src="www/wifimanager.js" name="wifimanager">
-        <clobbers target="WifiManager" />
+
+    <js-module src="www/wifimanager.js" name="wifimanager">
+        <clobbers target="WifiManager"/>
     </js-module>
-    
-    <dependency id="dff-cordova-plugin-common" url="https://github.com/dff-solutions/dff.CordovaPlugin.Common.git" />
- 
+
+    <dependency id="dff-cordova-plugin-common" url="https://github.com/dff-solutions/dff.CordovaPlugin.Common.git"/>
+
     <!-- android -->
     <platform name="android">
         <config-file target="res/xml/config.xml" parent="/*">
             <feature name="WifiManager">
                 <param name="android-package" value="com.dff.cordova.plugin.wifimanager.WifiManagerPlugin"/>
-                <param name="onload" value="true" />
+                <param name="onload" value="true"/>
             </feature>
         </config-file>
 
-        <config-file target="AndroidManifest.xml" parent="/manifest">        	        
-        	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+        <config-file target="AndroidManifest.xml" parent="/manifest">
+            <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
             <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
             <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"/>
             <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE"/>
             <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
-            
-            <uses-feature android:name="android.hardware.wifi" android:required="true" />
-        </config-file>
-        
-		<!-- config-file target="AndroidManifest.xml" parent="/manifest/application/">
-			<receiver android:name="com.dff.cordova.plugin.wifimanager.NetworkConnectivityReceiver" android:enabled="true">
-				<intent-filter>
-					<action android:name="android.net.wifi.STATE_CHANGE" />
-					<action android:name="android.net.wifi.WIFI_STATE_CHANGED" />
-				</intent-filter>
-			</receiver>
-	
-			<receiver android:name="com.dff.cordova.plugin.wifimanager.NetworkScanReceiver" android:enabled="true">
-				<intent-filter>
-					<action android:name="android.net.wifi.SCAN_RESULTS" />
-				</intent-filter>
-			</receiver>
-		</config-file -->		
 
-		<source-file src="src/android/com/dff/cordova/plugin/wifimanager/action/RemoveNetwork.java" target-dir="src/com/dff/cordova/plugin/wifimanager/action" />
-		<source-file src="src/android/com/dff/cordova/plugin/wifimanager/action/DisableNetwork.java" target-dir="src/com/dff/cordova/plugin/wifimanager/action" />
-		<source-file src="src/android/com/dff/cordova/plugin/wifimanager/action/EnableNetwork.java" target-dir="src/com/dff/cordova/plugin/wifimanager/action" />
-		<source-file src="src/android/com/dff/cordova/plugin/wifimanager/action/CompareSignalLevel.java" target-dir="src/com/dff/cordova/plugin/wifimanager/action" />
-		<source-file src="src/android/com/dff/cordova/plugin/wifimanager/action/StartScan.java" target-dir="src/com/dff/cordova/plugin/wifimanager/action" />
-		<source-file src="src/android/com/dff/cordova/plugin/wifimanager/action/WifiManagerAction.java" target-dir="src/com/dff/cordova/plugin/wifimanager/action" />
-		<source-file src="src/android/com/dff/cordova/plugin/wifimanager/action/IsWifiEnabled.java" target-dir="src/com/dff/cordova/plugin/wifimanager/action" />
-		<source-file src="src/android/com/dff/cordova/plugin/wifimanager/action/GetWifiState.java" target-dir="src/com/dff/cordova/plugin/wifimanager/action" />
-		<source-file src="src/android/com/dff/cordova/plugin/wifimanager/action/IsScanAlwaysAvailable.java" target-dir="src/com/dff/cordova/plugin/wifimanager/action" />
-		<source-file src="src/android/com/dff/cordova/plugin/wifimanager/action/Disconnect.java" target-dir="src/com/dff/cordova/plugin/wifimanager/action" />
-		<source-file src="src/android/com/dff/cordova/plugin/wifimanager/action/GetConfiguredNetworks.java" target-dir="src/com/dff/cordova/plugin/wifimanager/action" />
-		<source-file src="src/android/com/dff/cordova/plugin/wifimanager/action/GetConnectionInfo.java" target-dir="src/com/dff/cordova/plugin/wifimanager/action" />
-		<source-file src="src/android/com/dff/cordova/plugin/wifimanager/action/Reassociate.java" target-dir="src/com/dff/cordova/plugin/wifimanager/action" />
-		<source-file src="src/android/com/dff/cordova/plugin/wifimanager/action/GetDhcpInfo.java" target-dir="src/com/dff/cordova/plugin/wifimanager/action" />
-		<source-file src="src/android/com/dff/cordova/plugin/wifimanager/action/SetWifiEnabled.java" target-dir="src/com/dff/cordova/plugin/wifimanager/action" />
-		<source-file src="src/android/com/dff/cordova/plugin/wifimanager/action/CalculateSignalLevel.java" target-dir="src/com/dff/cordova/plugin/wifimanager/action" />
-		<source-file src="src/android/com/dff/cordova/plugin/wifimanager/action/SaveConfiguration.java" target-dir="src/com/dff/cordova/plugin/wifimanager/action" />
-		<source-file src="src/android/com/dff/cordova/plugin/wifimanager/action/PingSupplicant.java" target-dir="src/com/dff/cordova/plugin/wifimanager/action" />
-		<source-file src="src/android/com/dff/cordova/plugin/wifimanager/action/AddNetwork.java" target-dir="src/com/dff/cordova/plugin/wifimanager/action" />
-		<source-file src="src/android/com/dff/cordova/plugin/wifimanager/action/Reconnect.java" target-dir="src/com/dff/cordova/plugin/wifimanager/action" />
-		<source-file src="src/android/com/dff/cordova/plugin/wifimanager/action/GetScanResults.java" target-dir="src/com/dff/cordova/plugin/wifimanager/action" />
-		<source-file src="src/android/com/dff/cordova/plugin/wifimanager/NetworkScanReceiver.java" target-dir="src/com/dff/cordova/plugin/wifimanager" />
-		<source-file src="src/android/com/dff/cordova/plugin/wifimanager/WifiManagerPlugin.java" target-dir="src/com/dff/cordova/plugin/wifimanager" />
-		<source-file src="src/android/com/dff/cordova/plugin/wifimanager/model/JsonNetworkInfo.java" target-dir="src/com/dff/cordova/plugin/wifimanager/model" />
-		<source-file src="src/android/com/dff/cordova/plugin/wifimanager/model/JsonWifiConfigurationAllowedGroupCiphers.java" target-dir="src/com/dff/cordova/plugin/wifimanager/model" />
-		<source-file src="src/android/com/dff/cordova/plugin/wifimanager/model/WifiState.java" target-dir="src/com/dff/cordova/plugin/wifimanager/model" />
-		<source-file src="src/android/com/dff/cordova/plugin/wifimanager/model/JsonDhcpInfo.java" target-dir="src/com/dff/cordova/plugin/wifimanager/model" />
-		<source-file src="src/android/com/dff/cordova/plugin/wifimanager/model/JsonWifiConfigurationAllowedKeyManagement.java" target-dir="src/com/dff/cordova/plugin/wifimanager/model" />
-		<source-file src="src/android/com/dff/cordova/plugin/wifimanager/model/JsonWifiConfiguration.java" target-dir="src/com/dff/cordova/plugin/wifimanager/model" />
-		<source-file src="src/android/com/dff/cordova/plugin/wifimanager/model/JsonWifiInfo.java" target-dir="src/com/dff/cordova/plugin/wifimanager/model" />
-		<source-file src="src/android/com/dff/cordova/plugin/wifimanager/model/JsonWifiConfigurationAllowedAuthAlgorithm.java" target-dir="src/com/dff/cordova/plugin/wifimanager/model" />
-		<source-file src="src/android/com/dff/cordova/plugin/wifimanager/model/JsonWifiConfigurationAllowedProtocols.java" target-dir="src/com/dff/cordova/plugin/wifimanager/model" />
-		<source-file src="src/android/com/dff/cordova/plugin/wifimanager/model/JsonScanResult.java" target-dir="src/com/dff/cordova/plugin/wifimanager/model" />
-		<source-file src="src/android/com/dff/cordova/plugin/wifimanager/model/JsonWifiConfigurationAllowedPairwiseCiphers.java" target-dir="src/com/dff/cordova/plugin/wifimanager/model" />
-		<source-file src="src/android/com/dff/cordova/plugin/wifimanager/NetworkConnectivityReceiver.java" target-dir="src/com/dff/cordova/plugin/wifimanager" />
-     </platform>
+            <uses-feature android:name="android.hardware.wifi" android:required="true"/>
+        </config-file>
+
+        <!-- config-file target="AndroidManifest.xml" parent="/manifest/application/">
+            <receiver android:name="com.dff.cordova.plugin.wifimanager.NetworkConnectivityReceiver" android:enabled="true">
+                <intent-filter>
+                    <action android:name="android.net.wifi.STATE_CHANGE" />
+                    <action android:name="android.net.wifi.WIFI_STATE_CHANGED" />
+                </intent-filter>
+            </receiver>
+
+            <receiver android:name="com.dff.cordova.plugin.wifimanager.NetworkScanReceiver" android:enabled="true">
+                <intent-filter>
+                    <action android:name="android.net.wifi.SCAN_RESULTS" />
+                </intent-filter>
+            </receiver>
+        </config-file -->
+
+        <source-file src="src/android/com/dff/cordova/plugin/wifimanager/action/RemoveNetwork.java"
+                     target-dir="src/com/dff/cordova/plugin/wifimanager/action"/>
+        <source-file src="src/android/com/dff/cordova/plugin/wifimanager/action/DisableNetwork.java"
+                     target-dir="src/com/dff/cordova/plugin/wifimanager/action"/>
+        <source-file src="src/android/com/dff/cordova/plugin/wifimanager/action/EnableNetwork.java"
+                     target-dir="src/com/dff/cordova/plugin/wifimanager/action"/>
+        <source-file src="src/android/com/dff/cordova/plugin/wifimanager/action/CompareSignalLevel.java"
+                     target-dir="src/com/dff/cordova/plugin/wifimanager/action"/>
+        <source-file src="src/android/com/dff/cordova/plugin/wifimanager/action/StartScan.java"
+                     target-dir="src/com/dff/cordova/plugin/wifimanager/action"/>
+        <source-file src="src/android/com/dff/cordova/plugin/wifimanager/action/WifiManagerAction.java"
+                     target-dir="src/com/dff/cordova/plugin/wifimanager/action"/>
+        <source-file src="src/android/com/dff/cordova/plugin/wifimanager/action/IsWifiEnabled.java"
+                     target-dir="src/com/dff/cordova/plugin/wifimanager/action"/>
+        <source-file src="src/android/com/dff/cordova/plugin/wifimanager/action/GetWifiState.java"
+                     target-dir="src/com/dff/cordova/plugin/wifimanager/action"/>
+        <source-file src="src/android/com/dff/cordova/plugin/wifimanager/action/IsScanAlwaysAvailable.java"
+                     target-dir="src/com/dff/cordova/plugin/wifimanager/action"/>
+        <source-file src="src/android/com/dff/cordova/plugin/wifimanager/action/Disconnect.java"
+                     target-dir="src/com/dff/cordova/plugin/wifimanager/action"/>
+        <source-file src="src/android/com/dff/cordova/plugin/wifimanager/action/GetConfiguredNetworks.java"
+                     target-dir="src/com/dff/cordova/plugin/wifimanager/action"/>
+        <source-file src="src/android/com/dff/cordova/plugin/wifimanager/action/GetConnectionInfo.java"
+                     target-dir="src/com/dff/cordova/plugin/wifimanager/action"/>
+        <source-file src="src/android/com/dff/cordova/plugin/wifimanager/action/Reassociate.java"
+                     target-dir="src/com/dff/cordova/plugin/wifimanager/action"/>
+        <source-file src="src/android/com/dff/cordova/plugin/wifimanager/action/GetDhcpInfo.java"
+                     target-dir="src/com/dff/cordova/plugin/wifimanager/action"/>
+        <source-file src="src/android/com/dff/cordova/plugin/wifimanager/action/SetWifiEnabled.java"
+                     target-dir="src/com/dff/cordova/plugin/wifimanager/action"/>
+        <source-file src="src/android/com/dff/cordova/plugin/wifimanager/action/CalculateSignalLevel.java"
+                     target-dir="src/com/dff/cordova/plugin/wifimanager/action"/>
+        <source-file src="src/android/com/dff/cordova/plugin/wifimanager/action/SaveConfiguration.java"
+                     target-dir="src/com/dff/cordova/plugin/wifimanager/action"/>
+        <source-file src="src/android/com/dff/cordova/plugin/wifimanager/action/PingSupplicant.java"
+                     target-dir="src/com/dff/cordova/plugin/wifimanager/action"/>
+        <source-file src="src/android/com/dff/cordova/plugin/wifimanager/action/AddNetwork.java"
+                     target-dir="src/com/dff/cordova/plugin/wifimanager/action"/>
+        <source-file src="src/android/com/dff/cordova/plugin/wifimanager/action/Reconnect.java"
+                     target-dir="src/com/dff/cordova/plugin/wifimanager/action"/>
+        <source-file src="src/android/com/dff/cordova/plugin/wifimanager/action/GetScanResults.java"
+                     target-dir="src/com/dff/cordova/plugin/wifimanager/action"/>
+        <source-file src="src/android/com/dff/cordova/plugin/wifimanager/NetworkScanReceiver.java"
+                     target-dir="src/com/dff/cordova/plugin/wifimanager"/>
+        <source-file src="src/android/com/dff/cordova/plugin/wifimanager/WifiManagerPlugin.java"
+                     target-dir="src/com/dff/cordova/plugin/wifimanager"/>
+        <source-file src="src/android/com/dff/cordova/plugin/wifimanager/model/JsonNetworkInfo.java"
+                     target-dir="src/com/dff/cordova/plugin/wifimanager/model"/>
+        <source-file
+                src="src/android/com/dff/cordova/plugin/wifimanager/model/JsonWifiConfigurationAllowedGroupCiphers.java"
+                target-dir="src/com/dff/cordova/plugin/wifimanager/model"/>
+        <source-file src="src/android/com/dff/cordova/plugin/wifimanager/model/WifiState.java"
+                     target-dir="src/com/dff/cordova/plugin/wifimanager/model"/>
+        <source-file src="src/android/com/dff/cordova/plugin/wifimanager/model/JsonDhcpInfo.java"
+                     target-dir="src/com/dff/cordova/plugin/wifimanager/model"/>
+        <source-file
+                src="src/android/com/dff/cordova/plugin/wifimanager/model/JsonWifiConfigurationAllowedKeyManagement.java"
+                target-dir="src/com/dff/cordova/plugin/wifimanager/model"/>
+        <source-file src="src/android/com/dff/cordova/plugin/wifimanager/model/JsonWifiConfiguration.java"
+                     target-dir="src/com/dff/cordova/plugin/wifimanager/model"/>
+        <source-file src="src/android/com/dff/cordova/plugin/wifimanager/model/JsonWifiInfo.java"
+                     target-dir="src/com/dff/cordova/plugin/wifimanager/model"/>
+        <source-file
+                src="src/android/com/dff/cordova/plugin/wifimanager/model/JsonWifiConfigurationAllowedAuthAlgorithm.java"
+                target-dir="src/com/dff/cordova/plugin/wifimanager/model"/>
+        <source-file
+                src="src/android/com/dff/cordova/plugin/wifimanager/model/JsonWifiConfigurationAllowedProtocols.java"
+                target-dir="src/com/dff/cordova/plugin/wifimanager/model"/>
+        <source-file src="src/android/com/dff/cordova/plugin/wifimanager/model/JsonScanResult.java"
+                     target-dir="src/com/dff/cordova/plugin/wifimanager/model"/>
+        <source-file
+                src="src/android/com/dff/cordova/plugin/wifimanager/model/JsonWifiConfigurationAllowedPairwiseCiphers.java"
+                target-dir="src/com/dff/cordova/plugin/wifimanager/model"/>
+        <source-file src="src/android/com/dff/cordova/plugin/wifimanager/NetworkConnectivityReceiver.java"
+                     target-dir="src/com/dff/cordova/plugin/wifimanager"/>
+    </platform>
 </plugin>
