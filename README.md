@@ -456,13 +456,17 @@ WifiManager
  *
  * @name setWifiEnabled
  * @param {function} success Success callback.
- * @param {function} error Error callback
+ * @param {function} error Error callback.
+ * @param {Object}   args Named parameters.
+ * @param {Number}   args.enabled true to enable, false to disable.
  */
 WifiManager
     .setWifiEnabled(function (success) {
         console.log(success);
     }, function (reason) {
         console.error(reason);
+    }, {
+        enabled: true
     });
 ```
 
