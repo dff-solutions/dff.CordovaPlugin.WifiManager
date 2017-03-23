@@ -490,3 +490,6 @@ WifiManager
         console.error(reason);
     });
 ```
+
+## Documentation
+- <a href="https://dff-solutions.github.io/dff.CordovaPlugin.WifiManager/" target="_blank" >JAVA DOC</a>
