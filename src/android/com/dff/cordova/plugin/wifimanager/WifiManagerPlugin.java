@@ -2,7 +2,6 @@ package com.dff.cordova.plugin.wifimanager;
 
 import android.Manifest;
 import android.content.Context;
-import android.content.pm.PackageManager;
 import android.net.wifi.WifiManager;
 import com.dff.cordova.plugin.common.CommonPlugin;
 import com.dff.cordova.plugin.common.action.CordovaAction;
@@ -18,7 +17,7 @@ import java.util.HashMap;
 
 public class WifiManagerPlugin extends CommonPlugin {
     private static final String LOG_TAG = "com.dff.cordova.plugin.wifimanager.WifiManagerPlugin";
-    private static final String[] INTERNET_PERMISSIONS =
+    private static final String[] PERMISSIONS =
         {
             Manifest.permission.ACCESS_NETWORK_STATE,
             Manifest.permission.ACCESS_WIFI_STATE,
@@ -26,7 +25,7 @@ public class WifiManagerPlugin extends CommonPlugin {
             Manifest.permission.CHANGE_WIFI_MULTICAST_STATE,
             Manifest.permission.CHANGE_WIFI_STATE
         };
-    private static final int INTERNET_PERMISSION_CODE = 0;
+
     protected NetworkConnectivityReceiver networkConnectivityReceiver;
     protected NetworkScanReceiver networkScanReceiver;
     protected HashMap<String, Class<? extends WifiManagerAction>> actions = new HashMap<String, Class<? extends WifiManagerAction>>();
@@ -57,25 +56,9 @@ public class WifiManagerPlugin extends CommonPlugin {
         actions.put(StartScan.ACTION_NAME, StartScan.class);
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
-        if (!cordova.hasPermission(INTERNET_PERMISSIONS[0])) {
-            getReadAndWritePermission(INTERNET_PERMISSION_CODE);
-        }
-    }
-
-    private void getReadAndWritePermission(int requestCode) {
-        cordova.requestPermissions(this, requestCode, INTERNET_PERMISSIONS);
-    }
-
-    public void onRequestPermissionResult(int requestCode, String[] permissions,
-                                          int[] grantResults) throws JSONException {
-        for (int r : grantResults) {
-            if (r == PackageManager.PERMISSION_DENIED) {
-                CordovaPluginLog.e(LOG_TAG, "READ AND WRITE PERMISSIONS DENIED");
-                return;
-            }
+    private void requestPermissions() {
+        for (String permission : PERMISSIONS) {
+            CommonPlugin.addPermission(permission);
         }
     }
 
@@ -85,6 +68,7 @@ public class WifiManagerPlugin extends CommonPlugin {
     @Override
     public void pluginInitialize() {
         super.pluginInitialize();
+        requestPermissions();
         this.wifiManager = (WifiManager) this.cordova
             .getActivity()
             .getSystemService(Context.WIFI_SERVICE);
