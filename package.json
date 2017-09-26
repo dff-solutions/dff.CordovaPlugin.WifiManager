@@ -1,0 +1,29 @@
+{
+  "name": "@dff/cordova-plugin-wifimanager",
+  "version": "1.2.0",
+  "description": "dff cordova plugin wifi manager",
+  "main": "\"\"",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dff-solutions/dff.CordovaPlugin.WifiManager.git"
+  },
+  "keywords": [
+    "dff",
+    "cordova",
+    "android",
+    "wifi",
+    "manager"
+  ],
+  "author": "frankkoenigstein",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dff-solutions/dff.CordovaPlugin.WifiManager/issues"
+  },
+  "homepage": "https://github.com/dff-solutions/dff.CordovaPlugin.WifiManager#readme"
+}
