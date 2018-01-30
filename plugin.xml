@@ -2,8 +2,9 @@
 <plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
         xmlns:android="http://schemas.android.com/apk/res/android"
         id="dff-cordova-plugin-wifimanager"
-        spec="1.2.0"
-        version="1.2.0">
+        name="WifiManagerPlugin"
+        spec="1.2.1"
+        version="1.2.1">
 
     <name>WifiManager</name>
     <description>WifiManager Plugin</description>
