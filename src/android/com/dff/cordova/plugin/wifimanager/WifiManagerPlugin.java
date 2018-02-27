@@ -71,6 +71,7 @@ public class WifiManagerPlugin extends CommonPlugin {
         requestPermissions();
         this.wifiManager = (WifiManager) this.cordova
             .getActivity()
+            .getApplicationContext()
             .getSystemService(Context.WIFI_SERVICE);
         this.networkConnectivityReceiver = new NetworkConnectivityReceiver(this.cordova.getActivity());
         this.networkScanReceiver = new NetworkScanReceiver(this.cordova.getActivity(), this.wifiManager);
